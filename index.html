@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filip Fidanoski | Academic Website</title>
+
+  <style>
+    :root {
+      --main: #12355b;
+      --accent: #1f6f8b;
+      --light: #f5f7fa;
+      --text: #222;
+      --muted: #666;
+      --border: #ddd;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #ffffff;
+      line-height: 1.65;
+    }
+
+    header {
+      background: var(--main);
+      color: white;
+      padding: 48px 20px 36px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.6rem;
+      letter-spacing: 0.5px;
+    }
+
+    header p {
+      max-width: 850px;
+      margin: 12px auto 0;
+      font-size: 1.1rem;
+      color: #e7eef7;
+    }
+
+    nav {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      text-align: center;
+      padding: 12px 10px;
+    }
+
+    nav a {
+      color: var(--main);
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 12px;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 35px 20px 60px;
+    }
+
+    section {
+      margin-bottom: 45px;
+    }
+
+    h2 {
+      color: var(--main);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      color: var(--main);
+      margin-bottom: 6px;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .intro {
+      background: var(--light);
+      border-left: 5px solid var(--accent);
+      padding: 22px;
+      border-radius: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .card p {
+      margin-top: 6px;
+    }
+
+    ul {
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--light);
+      color: var(--main);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 10px;
+      margin: 4px 4px 4px 0;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      background: var(--main);
+      color: #e7eef7;
+      text-align: center;
+      padding: 24px 15px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ffffff;
+    }
+
+    @media (max-width: 650px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 6px 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Filip Fidanoski</h1>
+    <p>
+      Experimental and behavioural economist working on risk and time preferences,
+      decision-making for others, algorithmic delegation, and climate-related behavioural choices.
+    </p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#working-papers">Working Papers</a>
+    <a href="#projects">Projects</a>
+    <a href="#software">Software</a>
+    <a href="#cv">CV</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="intro">
+        <p>
+          I am an experimental and behavioural economist. My research studies how people make
+          decisions under risk, uncertainty, ambiguity, time delay, and responsibility for others.
+          I use laboratory and field experiments to examine individual and delegated decision-making,
+          with applications to climate choices, algorithmic delegation, and public policy.
+        </p>
+
+        <p>
+          I hold a PhD in Economics from the School of Economics, UNSW Business School,
+          University of New South Wales. My dissertation was titled
+          <em>Essays on risk and time preference elicitation</em>.
+        </p>
+      </div>
+    </section>
+
+    <section id="research">
+      <h2>Research Interests</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Primary interests</h3>
+          <p>
+            Behavioural economics, decision theory, experimental economics, public economics,
+            and the economics of climate change.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Decision domains</h3>
+          <p>
+            Risk, time, beliefs, ambiguity, delegated decisions, paternalism,
+            and responsibility in choices for others.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Additional interests</h3>
+          <p>
+            Economics of AI, auctions, game theory, mechanism design,
+            open science, and the replication crisis.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        <span class="tag">Behavioural Economics</span>
+        <span class="tag">Experimental Economics</span>
+        <span class="tag">Decision Theory</span>
+        <span class="tag">Risk Preferences</span>
+        <span class="tag">Time Preferences</span>
+        <span class="tag">Ambiguity</span>
+        <span class="tag">Climate Choices</span>
+        <span class="tag">Algorithmic Delegation</span>
+      </p>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+
+      <div class="card">
+        <h3>PhD in Economics</h3>
+        <p>
+          School of Economics, UNSW Business School, University of New South Wales,
+          Sydney, Australia.
+        </p>
+        <p>
+          Dissertation: <em>Essays on risk and time preference elicitation</em>.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>MA in Economics</h3>
+        <p>
+          School of Economics, UNSW Business School, University of New South Wales,
+          Sydney, Australia.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Pre-doctoral coursework in Economics and Finance</h3>
+        <p>
+          Faculty of Law, Economics and Finance, University of Luxembourg,
+          Luxembourg.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>MSc and BSc in Economics</h3>
+        <p>
+          Faculty of Economics, Ss Cyril and Methodius University in Skopje,
+          Macedonia.
+        </p>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Selected Publications</h2>
+
+      <ul>
+        <li>
+          Fidanoski, F., and Johnson, T. (2023).
+          “Dynamic Experiments for Estimating Preferences [DEEP]: A z-Tree implementation.”
+          <em>Journal of Behavioral and Experimental Finance</em>, 38, 100805.
+          <a href="https://www.sciencedirect.com/science/article/pii/S2214635023000199">
+            Article
+          </a>
+        </li>
+
+        <li>
+          Simeonovski, K., Sazdovski, I., and Fidanoski, F. (2025).
+          “Sustainable finance.”
+          In M. Zioło and M. Zaleskaja (Eds.),
+          <em>Financial Innovation and Sustainability: Green, Blue and Sustainable Finance</em>.
+          Routledge.
+        </li>
+
+        <li>
+          Fidanoski, F., Simeonovski, K., and Cvetkoska, V. (2021).
+          “Energy Efficiency in OECD Countries: A DEA Approach.”
+          <em>Energies</em>, 14, 1185.
+        </li>
+
+        <li>
+          Fidanoski, F., Choudhry, M., Davidović, M., and Sergi, B. S. (2018).
+          “What does affect profitability of banks in Croatia?”
+          <em>Competitiveness Review</em>, 28(4), 338–367.
+        </li>
+      </ul>
+    </section>
+
+    <section id="working-papers">
+      <h2>Working Papers</h2>
+
+      <ul>
+        <li>
+          Fidanoski, F., Ortmann, A., and Dixit, V.
+          “Can a single model account for both risky choices and inter-temporal choices?
+          Testing the assumptions underlying models of risky intertemporal choice:
+          A conceptual replication.”
+        </li>
+
+        <li>
+          Fidanoski, F., Ortmann, A., and Dixit, V.
+          “Zooming risky-intertemporal models across participant pools.”
+        </li>
+
+        <li>
+          Casari, M., and Fidanoski, F.
+          “Deciding on behalf of others: An experiment into climate choices.”
+        </li>
+
+        <li>
+          Fidanoski, F., Ortmann, A., and Dixit, V.
+          “Elicitation of latent risk preferences: Survey.”
+        </li>
+
+        <li>
+          Chevrier, M., Fidanoski, F., and Teixeira, V.
+          “It is wrong, but not by much! How does error volatility impact delegation
+          to algorithms in energy decisions?”
+        </li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Projects and Research in Progress</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Climate choices for others</h3>
+          <p>
+            Experimental work on decision-making for others under ambiguous conditions
+            in the domain of climate change.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Risk and time preferences</h3>
+          <p>
+            Research on the elicitation, consistency, and temporal stability of latent
+            risk preferences across contexts and domains.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Algorithmic delegation</h3>
+          <p>
+            Research on how people delegate forecasting decisions to human and algorithmic agents,
+            especially in energy-related decisions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="software">
+      <h2>Software</h2>
+
+      <ul>
+        <li>
+          <a href="https://github.com/FilipFidanoski/DEEP_z-tree">
+            DEEP z-Tree implementation
+          </a>
+          — z-Tree implementation of Dynamic Experiments for Estimating Preferences.
+        </li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+
+      <p>
+        <strong>Programming and software:</strong>
+        R, Python, Julia, JavaScript, MATLAB, Mathematica, STATA, LaTeX,
+        oTree, z-Tree, z-Tree unleashed, G*Power, Tableau, Microsoft Office, and NVivo.
+      </p>
+
+      <p>
+        <strong>Languages:</strong>
+        Macedonian, English, Serbian-Croatian, Russian, Bulgarian, and French.
+      </p>
+    </section>
+
+    <section id="cv">
+      <h2>CV</h2>
+
+      <p>
+        A downloadable CV will be available here soon.
+      </p>
+
+      <p>
+        After uploading your CV to this GitHub repository, rename it to
+        <strong>cv.pdf</strong> and replace the sentence above with:
+      </p>
+
+      <p>
+        <a href="cv.pdf">Download my CV</a>
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact and Profiles</h2>
+
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:filipfidanoski@gmail.com">filipfidanoski@gmail.com</a>
+      </p>
+
+      <ul>
+        <li>
+          <a href="https://scholar.google.com/citations?user=tziEf2cAAAAJ&hl=en">
+            Google Scholar
+          </a>
+        </li>
+        <li>
+          <a href="https://orcid.org/0000-0003-4311-7359">
+            ORCID
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/FilipFidanoski">
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=5062343">
+            SSRN
+          </a>
+        </li>
+        <li>
+          <a href="https://www.researchgate.net/profile/Filip-Fidanoski">
+            ResearchGate
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/filip-fidanoski-81017b4b/">
+            LinkedIn
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      © 2026 Filip Fidanoski. Academic website hosted with GitHub Pages.
+    </p>
+  </footer>
+
+</body>
+</html>
