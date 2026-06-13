@@ -8,57 +8,123 @@
   <style>
     :root {
       --main: #12355b;
+      --main-dark: #071d36;
       --accent: #1f6f8b;
+      --accent-light: #38a3b8;
+      --gold: #d8a23a;
       --light: #f5f7fa;
       --text: #222;
       --muted: #666;
       --border: #ddd;
+      --white: #ffffff;
+      --shadow: 0 16px 38px rgba(0, 0, 0, 0.12);
+      --soft-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
-      background: #ffffff;
+      background:
+        radial-gradient(circle at top left, rgba(31, 111, 139, 0.12), transparent 28%),
+        linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
       line-height: 1.65;
     }
 
+    a {
+      color: var(--accent);
+    }
+
     header {
-      background: var(--main);
+      background:
+        linear-gradient(135deg, rgba(7, 29, 54, 0.98), rgba(18, 53, 91, 0.97)),
+        radial-gradient(circle at 20% 25%, rgba(56, 163, 184, 0.45), transparent 28%);
       color: white;
-      padding: 48px 20px 36px;
-      text-align: center;
+      padding: 64px 24px 56px;
+      overflow: hidden;
+    }
+
+    .hero {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 52px;
+      align-items: center;
     }
 
     .profile-photo {
-      width: 175px;
-      height: 175px;
+      width: 320px;
+      height: 405px;
       object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid white;
-      margin-bottom: 18px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      border-radius: 26px;
+      border: 5px solid rgba(255, 255, 255, 0.92);
+      box-shadow: 0 26px 58px rgba(0, 0, 0, 0.38);
+      background: #d9e3ee;
+    }
+
+    .hero-text {
+      text-align: left;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      color: #e7eef7;
+      margin-bottom: 16px;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.6rem;
+      font-size: 3.9rem;
+      line-height: 1.05;
       letter-spacing: 0.5px;
     }
 
     header p {
-      max-width: 850px;
-      margin: 12px auto 0;
-      font-size: 1.1rem;
+      max-width: 760px;
+      margin: 18px 0 0;
+      font-size: 1.25rem;
       color: #e7eef7;
     }
 
+    .hero-links {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-links a {
+      color: white;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.10);
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    .hero-links a:hover {
+      background: rgba(255, 255, 255, 0.20);
+    }
+
     nav {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
@@ -81,100 +147,428 @@
     }
 
     main {
-      max-width: 1000px;
+      max-width: 1150px;
       margin: 0 auto;
-      padding: 35px 20px 60px;
+      padding: 44px 20px 74px;
     }
 
     section {
-      margin-bottom: 45px;
+      margin-bottom: 66px;
     }
 
     h2 {
       color: var(--main);
+      font-size: 2rem;
       border-bottom: 2px solid var(--border);
-      padding-bottom: 6px;
-      margin-bottom: 18px;
+      padding-bottom: 8px;
+      margin-bottom: 24px;
     }
 
     h3 {
       color: var(--main);
-      margin-bottom: 6px;
-    }
-
-    a {
-      color: var(--accent);
+      margin-bottom: 8px;
     }
 
     .intro {
-      background: var(--light);
-      border-left: 5px solid var(--accent);
-      padding: 22px;
-      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      border-left: 7px solid var(--accent);
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: var(--soft-shadow);
+      font-size: 1.04rem;
     }
 
-    .grid {
+    .research-slider {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(290px, 1fr);
+      gap: 20px;
+      overflow-x: auto;
+      padding: 8px 4px 24px;
+      scroll-snap-type: x mandatory;
     }
 
-    .card {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 18px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    .research-slide {
+      min-height: 255px;
+      scroll-snap-align: start;
+      border-radius: 24px;
+      padding: 26px;
+      color: white;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
     }
 
-    .card p {
-      margin-top: 6px;
+    .research-slide::after {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      right: -50px;
+      bottom: -50px;
+      background: rgba(255, 255, 255, 0.14);
     }
 
-    ul {
-      padding-left: 22px;
+    .research-number {
+      font-size: 0.9rem;
+      font-weight: bold;
+      opacity: 0.82;
+      letter-spacing: 1px;
     }
 
-    li {
-      margin-bottom: 10px;
+    .research-slide h3 {
+      color: white;
+      font-size: 1.38rem;
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .research-slide p {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 0;
+    }
+
+    .slide-1 {
+      background: linear-gradient(135deg, #12355b, #1f6f8b);
+    }
+
+    .slide-2 {
+      background: linear-gradient(135deg, #16405f, #3f8f78);
+    }
+
+    .slide-3 {
+      background: linear-gradient(135deg, #263b73, #6b7fd7);
+    }
+
+    .slide-4 {
+      background: linear-gradient(135deg, #5a3e7a, #b05f9c);
+    }
+
+    .tag-cloud {
+      margin-top: 12px;
     }
 
     .tag {
       display: inline-block;
-      background: var(--light);
+      background: white;
       color: var(--main);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 5px 10px;
-      margin: 4px 4px 4px 0;
+      border-radius: 999px;
+      padding: 6px 12px;
+      margin: 5px 4px 5px 0;
       font-size: 0.9rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .position-card {
+      display: grid;
+      grid-template-columns: 125px 1fr;
+      gap: 24px;
+      align-items: center;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--soft-shadow);
+      margin-bottom: 22px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 22px;
+    }
+
+    .education-card {
+      display: grid;
+      grid-template-columns: 125px 1fr;
+      gap: 24px;
+      align-items: center;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--soft-shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .education-card:hover,
+    .position-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .logo-box {
+      width: 110px;
+      height: 110px;
+      border-radius: 20px;
+      background: var(--light);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 13px;
+    }
+
+    .logo-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .text-logo {
+      background: linear-gradient(135deg, var(--main), var(--accent));
+      color: white;
+      font-weight: bold;
+      font-size: 1.4rem;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .text-logo span {
+      line-height: 1.25;
+    }
+
+    .year {
+      display: inline-block;
+      background: #eef6fb;
+      color: var(--main);
+      border-radius: 999px;
+      padding: 4px 11px;
+      font-weight: bold;
+      font-size: 0.86rem;
+      margin-bottom: 8px;
+    }
+
+    .publication-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 24px;
+    }
+
+    .publication-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      box-shadow: var(--soft-shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .publication-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow);
+    }
+
+    .cover {
+      height: 300px;
+      background: linear-gradient(135deg, rgba(18, 53, 91, 0.95), rgba(31, 111, 139, 0.88));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .publication-body {
+      padding: 19px;
+    }
+
+    .publication-body h3 {
+      margin-top: 0;
+      font-size: 1.05rem;
+    }
+
+    .publication-meta {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #eef6fb;
+      color: var(--main);
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 0.78rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .working-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+      gap: 24px;
+    }
+
+    .project-map {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      position: relative;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 25px;
+      box-shadow: var(--soft-shadow);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 7px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--gold));
+    }
+
+    .project-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: #eef6fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 13px;
+    }
+
+    .software-panel {
+      display: grid;
+      grid-template-columns: 1.05fr 1.95fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .software-feature {
+      background: linear-gradient(135deg, var(--main), var(--accent));
+      color: white;
+      border-radius: 26px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .software-feature h3 {
+      color: white;
+      font-size: 1.55rem;
+      margin-top: 0;
+    }
+
+    .software-feature a {
+      color: white;
+      font-weight: bold;
+    }
+
+    .skills-box {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 25px;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+      gap: 15px;
+    }
+
+    .contact-link {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      padding: 17px;
+      text-decoration: none;
+      color: var(--main);
+      font-weight: bold;
+      box-shadow: var(--soft-shadow);
+      transition: transform 0.2s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-3px);
+      color: var(--accent);
     }
 
     footer {
       background: var(--main);
       color: #e7eef7;
       text-align: center;
-      padding: 24px 15px;
+      padding: 25px 15px;
       font-size: 0.9rem;
     }
 
-    footer a {
-      color: #ffffff;
-    }
+    @media (max-width: 760px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
 
-    @media (max-width: 650px) {
-      header h1 {
-        font-size: 2rem;
+      .hero-text {
+        text-align: center;
       }
 
       .profile-photo {
-        width: 145px;
-        height: 145px;
+        width: 235px;
+        height: 300px;
+        margin: 0 auto;
+      }
+
+      header h1 {
+        font-size: 2.45rem;
+      }
+
+      header p {
+        font-size: 1.05rem;
+      }
+
+      .hero-links {
+        justify-content: center;
       }
 
       nav a {
         display: inline-block;
         margin: 6px 8px;
+      }
+
+      .position-card,
+      .education-card {
+        grid-template-columns: 1fr;
+      }
+
+      .software-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .cover {
+        height: 260px;
       }
     }
   </style>
@@ -183,23 +577,37 @@
 <body>
 
   <header>
-    <img src="filip.jpg" alt="Filip Fidanoski" class="profile-photo">
+    <div class="hero">
+      <img src="filip.jpg" alt="Filip Fidanoski" class="profile-photo">
 
-    <h1>Filip Fidanoski</h1>
-    <p>
-      Research Fellow in Behavioural Decision Theory<br>
-      School of Management, Zhejiang University
-    </p>
+      <div class="hero-text">
+        <span class="eyebrow">Experimental and behavioural economics</span>
+        <h1>Filip Fidanoski</h1>
+        <p>
+          Research Fellow in Behavioural Decision Theory<br>
+          School of Management, Zhejiang University
+        </p>
+
+        <div class="hero-links">
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#working-papers">Working Papers</a>
+          <a href="#software">Software</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
   </header>
 
   <nav>
     <a href="#about">About</a>
     <a href="#research">Research</a>
+    <a href="#position">Position</a>
+    <a href="#education">Education</a>
     <a href="#publications">Publications</a>
     <a href="#working-papers">Working Papers</a>
     <a href="#projects">Projects</a>
     <a href="#software">Software</a>
-    <a href="#cv">CV</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -226,139 +634,223 @@
     <section id="research">
       <h2>Research Interests</h2>
 
-      <div class="grid">
-        <div class="card">
-          <h3>Primary interests</h3>
+      <div class="research-slider">
+        <div class="research-slide slide-1">
+          <div class="research-number">01</div>
+          <h3>Behavioural and Experimental Economics</h3>
           <p>
-            Behavioural economics, decision theory, experimental economics, public economics,
-            and the economics of climate change.
+            Laboratory and field experiments on how people make choices under uncertainty,
+            incentives, responsibility, and institutional constraints.
           </p>
         </div>
 
-        <div class="card">
-          <h3>Decision domains</h3>
+        <div class="research-slide slide-2">
+          <div class="research-number">02</div>
+          <h3>Decision Theory</h3>
           <p>
-            Risk, time, beliefs, ambiguity, delegated decisions, paternalism,
-            and responsibility in choices for others.
+            Risk, time, beliefs, ambiguity, intertemporal choice, preference elicitation,
+            and the consistency of latent preferences across contexts.
           </p>
         </div>
 
-        <div class="card">
-          <h3>Additional interests</h3>
+        <div class="research-slide slide-3">
+          <div class="research-number">03</div>
+          <h3>Decision-Making for Others</h3>
           <p>
-            Economics of AI, auctions, game theory, mechanism design,
-            open science, and the replication crisis.
+            Delegated choices, paternalism, preference aggregation, responsibility aversion,
+            and self–other gaps in economic decision-making.
+          </p>
+        </div>
+
+        <div class="research-slide slide-4">
+          <div class="research-number">04</div>
+          <h3>Climate and Algorithmic Decisions</h3>
+          <p>
+            Climate-related behavioural choices, energy decisions, algorithmic delegation,
+            and the role of uncertainty in public-policy-relevant decisions.
           </p>
         </div>
       </div>
 
-      <p>
-        <span class="tag">Behavioural Economics</span>
-        <span class="tag">Experimental Economics</span>
-        <span class="tag">Decision Theory</span>
+      <div class="tag-cloud">
         <span class="tag">Risk Preferences</span>
         <span class="tag">Time Preferences</span>
         <span class="tag">Ambiguity</span>
+        <span class="tag">Beliefs</span>
         <span class="tag">Climate Choices</span>
-        <span class="tag">Algorithmic Delegation</span>
-      </p>
+        <span class="tag">Delegation</span>
+        <span class="tag">Algorithmic Aversion</span>
+        <span class="tag">Paternalism</span>
+        <span class="tag">Open Science</span>
+      </div>
+    </section>
+
+    <section id="position">
+      <h2>Current Position</h2>
+
+      <div class="position-card">
+        <div class="logo-box">
+          <img src="zju-logo.png" alt="Zhejiang University logo">
+        </div>
+
+        <div>
+          <span class="year">Current</span>
+          <h3>Research Fellow in Behavioural Decision Theory</h3>
+          <p>
+            School of Management, Zhejiang University.
+          </p>
+          <p>
+            My current work develops experimental and behavioural approaches to
+            decision-making under uncertainty, with a focus on delegation,
+            algorithmic advice, and climate-related choices.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section id="education">
       <h2>Education</h2>
 
-      <div class="card">
-        <h3>PhD in Economics</h3>
-        <p>
-          School of Economics, UNSW Business School, University of New South Wales,
-          Sydney, Australia.
-        </p>
-        <p>
-          Dissertation: <em>Essays on risk and time preference elicitation</em>.
-        </p>
-        <p>
-          Supervisory team: Andreas Ortmann (primary supervisor), Vinayak Dixit
-          (co-supervisor, UNSW School of Transportation), and Glenn W. Harrison
-          (external/secondary supervisor, GSU).
-        </p>
-      </div>
+      <div class="timeline">
 
+        <div class="education-card">
+          <div class="logo-box">
+            <img src="unsw-logo.png" alt="UNSW logo">
+          </div>
+          <div>
+            <span class="year">2018–2022 · awarded 2023</span>
+            <h3>PhD in Economics</h3>
+            <p>
+              School of Economics, UNSW Business School, University of New South Wales,
+              Sydney, Australia.
+            </p>
+            <p>
+              Dissertation: <em>Essays on risk and time preference elicitation</em>.
+            </p>
+            <p>
+              Supervisory team: Andreas Ortmann, Vinayak Dixit, and Glenn W. Harrison.
+            </p>
+          </div>
+        </div>
+
+        <div class="education-card">
+          <div class="logo-box">
+            <img src="unsw-logo.png" alt="UNSW logo">
+          </div>
+          <div>
+            <span class="year">2018–2019</span>
+            <h3>MA in Economics</h3>
+            <p>
+              School of Economics, UNSW Business School, University of New South Wales,
+              Sydney, Australia.
+            </p>
+          </div>
+        </div>
+
+        <div class="education-card">
+          <div class="logo-box text-logo">
+            <span>MSc<br>BSc</span>
+          </div>
+          <div>
+            <span class="year">2014–2015 · 2009–2013</span>
+            <h3>MSc and BSc in Economics</h3>
+            <p>
+              Faculty of Economics, Ss Cyril and Methodius University in Skopje,
+              Macedonia.
+            </p>
+          </div>
+        </div>
+
+      </div>
     </section>
 
     <section id="publications">
       <h2>Selected Publications</h2>
 
-      <ul>
-        <li>
-          Fidanoski, F., and Johnson, T. (2023).
-          “Dynamic Experiments for Estimating Preferences [DEEP]: A z-Tree implementation.”
-          <em>Journal of Behavioral and Experimental Finance</em>, 38, 100805.
-          <a href="https://www.sciencedirect.com/science/article/pii/S2214635023000199">
-            Article
-          </a>
-        </li>
+      <div class="publication-grid">
 
-        <li>
-          Simeonovski, K., Sazdovski, I., and Fidanoski, F. (2025).
-          “Sustainable finance.”
-          In M. Zioło and M. Zaleskaja (Eds.),
-          <em>Financial Innovation and Sustainability: Green, Blue and Sustainable Finance</em>.
-          Routledge.
-        </li>
+        <a class="publication-card" href="https://www.sciencedirect.com/science/article/pii/S2214635023000199" target="_blank">
+          <div class="cover">
+            <img src="deep-cover.jpg" alt="DEEP article cover">
+          </div>
+          <div class="publication-body">
+            <span class="badge">Journal article</span>
+            <h3>Dynamic Experiments for Estimating Preferences [DEEP]</h3>
+            <p>
+              Fidanoski, F., and Johnson, T. (2023).
+            </p>
+            <p class="publication-meta">
+              Journal of Behavioral and Experimental Finance, 38, 100805.
+            </p>
+          </div>
+        </a>
 
-        <li>
-          Fidanoski, F., Simeonovski, K., and Cvetkoska, V. (2021).
-          “Energy Efficiency in OECD Countries: A DEA Approach.”
-          <em>Energies</em>, 14, 1185.
-        </li>
+        <a class="publication-card" href="https://www.routledge.com/Financial-Innovation-and-Sustainability-Green-Blue-and-Sustainable-Finance/Ziolo-Zaleskaja/p/book/9781032262458" target="_blank">
+          <div class="cover">
+            <img src="routledge-cover.jpg" alt="Sustainable Finance chapter cover">
+          </div>
+          <div class="publication-body">
+            <span class="badge">Book chapter</span>
+            <h3>Sustainable Finance</h3>
+            <p>
+              Simeonovski, K., Sazdovski, I., and Fidanoski, F. (2025).
+            </p>
+            <p class="publication-meta">
+              In Financial Innovation and Sustainability. Routledge.
+            </p>
+          </div>
+        </a>
 
-        <li>
-          Fidanoski, F., Choudhry, M., Davidović, M., and Sergi, B. S. (2018).
-          “What does affect profitability of banks in Croatia?”
-          <em>Competitiveness Review</em>, 28(4), 338–367.
-        </li>
-      </ul>
+      </div>
     </section>
 
     <section id="working-papers">
       <h2>Working Papers</h2>
 
-      <ul>
-        <li>
-          Fidanoski, F., Ortmann, A., and Dixit, V.
-          “Can a single model account for both risky choices and inter-temporal choices?
-          Testing the assumptions underlying models of risky intertemporal choice:
-          A conceptual replication.”
-        </li>
+      <div class="working-grid">
 
-        <li>
-          Fidanoski, F., Ortmann, A., and Dixit, V.
-          “Zooming risky-intertemporal models across participant pools.”
-        </li>
+        <a class="publication-card" href="https://ideas.repec.org/p/zbw/i4rdps/205.html" target="_blank">
+          <div class="cover">
+            <img src="replication-cover.jpg" alt="I4R replication paper cover">
+          </div>
+          <div class="publication-body">
+            <span class="badge">I4R Discussion Paper</span>
+            <h3>Risky Intertemporal Choices Have a Common Value Function, But a Separate Choice Function</h3>
+            <p>
+              Fidanoski, F., Dixit, V., and Ortmann, A. (2025).
+            </p>
+            <p class="publication-meta">
+              Institute for Replication Discussion Paper Series, No. 205.
+            </p>
+          </div>
+        </a>
 
-        <li>
-          Casari, M., and Fidanoski, F.
-          “Deciding on behalf of others: An experiment into climate choices.”
-        </li>
+        <a class="publication-card" href="#contact">
+          <div class="cover">
+            <img src="ai-paper-cover.jpg" alt="Algorithmic delegation working paper cover">
+          </div>
+          <div class="publication-body">
+            <span class="badge">Working paper</span>
+            <h3>Choosing Between Algorithmic Forecasters: What Drives Delegation?</h3>
+            <p>
+              Chevrier, M., Fidanoski, F., and Teixeira, V.
+            </p>
+            <p class="publication-meta">
+              Available upon request.
+            </p>
+          </div>
+        </a>
 
-        <li>
-          Fidanoski, F., Ortmann, A., and Dixit, V.
-          “Elicitation of latent risk preferences: Survey.”
-        </li>
-
-        <li>
-          Chevrier, M., Fidanoski, F., and Teixeira, V.
-          “It is wrong, but not by much! How does error volatility impact delegation
-          to algorithms in energy decisions?”
-        </li>
-      </ul>
+      </div>
     </section>
 
     <section id="projects">
       <h2>Projects and Research in Progress</h2>
 
-      <div class="grid">
-        <div class="card">
+      <div class="project-map">
+
+        <div class="project-card">
+          <div class="project-icon">🌍</div>
           <h3>Climate choices for others</h3>
           <p>
             Experimental work on decision-making for others under ambiguous conditions
@@ -366,7 +858,8 @@
           </p>
         </div>
 
-        <div class="card">
+        <div class="project-card">
+          <div class="project-icon">⏳</div>
           <h3>Risk and time preferences</h3>
           <p>
             Research on the elicitation, consistency, and temporal stability of latent
@@ -374,59 +867,63 @@
           </p>
         </div>
 
-        <div class="card">
+        <div class="project-card">
+          <div class="project-icon">🤖</div>
           <h3>Algorithmic delegation</h3>
           <p>
             Research on how people delegate forecasting decisions to human and algorithmic agents,
             especially in energy-related decisions.
           </p>
         </div>
+
+        <div class="project-card">
+          <div class="project-icon">🧭</div>
+          <h3>Decision-making for others</h3>
+          <p>
+            Work on self–other gaps, paternalism, responsibility aversion,
+            preference projection, and preference aggregation.
+          </p>
+        </div>
+
       </div>
     </section>
 
     <section id="software">
       <h2>Software</h2>
 
-      <ul>
-        <li>
-          <a href="https://github.com/FilipFidanoski/DEEP_z-tree">
-            DEEP z-Tree implementation
-          </a>
-          — z-Tree implementation of Dynamic Experiments for Estimating Preferences.
-        </li>
-      </ul>
-    </section>
+      <div class="software-panel">
+        <div class="software-feature">
+          <h3>DEEP z-Tree Implementation</h3>
+          <p>
+            A z-Tree implementation of Dynamic Experiments for Estimating Preferences.
+          </p>
+          <p>
+            <a href="https://github.com/FilipFidanoski/DEEP_z-tree" target="_blank">
+              View on GitHub
+            </a>
+          </p>
+        </div>
 
-    <section id="skills">
-      <h2>Skills</h2>
+        <div class="skills-box">
+          <h3>Programming and Research Tools</h3>
+          <p>
+            R, Python, Julia, JavaScript, MATLAB, Mathematica, STATA, LaTeX,
+            oTree, z-Tree, z-Tree unleashed, G*Power, Tableau, Microsoft Office,
+            and NVivo.
+          </p>
 
-      <p>
-        <strong>Programming and software:</strong>
-        R, Python, Julia, JavaScript, MATLAB, Mathematica, STATA, LaTeX,
-        oTree, z-Tree, z-Tree unleashed, G*Power, Tableau, Microsoft Office, and NVivo.
-      </p>
-
-      <p>
-        <strong>Languages:</strong>
-        Macedonian, English, Serbian-Croatian, Russian, Bulgarian, and French.
-      </p>
-    </section>
-
-    <section id="cv">
-      <h2>CV</h2>
-
-      <p>
-        A downloadable CV will be available here soon.
-      </p>
-
-      <p>
-        After uploading your CV to this GitHub repository, rename it to
-        <strong>cv.pdf</strong> and replace the sentence above with:
-      </p>
-
-      <p>
-        <a href="cv.pdf">Download my CV</a>
-      </p>
+          <div class="tag-cloud">
+            <span class="tag">R</span>
+            <span class="tag">Python</span>
+            <span class="tag">STATA</span>
+            <span class="tag">oTree</span>
+            <span class="tag">z-Tree</span>
+            <span class="tag">LaTeX</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">MATLAB</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="contact">
@@ -437,38 +934,31 @@
         <a href="mailto:filipfidanoski@gmail.com">filipfidanoski@gmail.com</a>
       </p>
 
-      <ul>
-        <li>
-          <a href="https://scholar.google.com/citations?user=tziEf2cAAAAJ&hl=en">
-            Google Scholar
-          </a>
-        </li>
-        <li>
-          <a href="https://orcid.org/0000-0003-4311-7359">
-            ORCID
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/FilipFidanoski">
-            GitHub
-          </a>
-        </li>
-        <li>
-          <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=5062343">
-            SSRN
-          </a>
-        </li>
-        <li>
-          <a href="https://www.researchgate.net/profile/Filip-Fidanoski">
-            ResearchGate
-          </a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/filip-fidanoski-81017b4b/">
-            LinkedIn
-          </a>
-        </li>
-      </ul>
+      <div class="contact-grid">
+        <a class="contact-link" href="https://scholar.google.com/citations?user=tziEf2cAAAAJ&hl=en" target="_blank">
+          Google Scholar
+        </a>
+
+        <a class="contact-link" href="https://orcid.org/0000-0003-4311-7359" target="_blank">
+          ORCID
+        </a>
+
+        <a class="contact-link" href="https://github.com/FilipFidanoski" target="_blank">
+          GitHub
+        </a>
+
+        <a class="contact-link" href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=5062343" target="_blank">
+          SSRN
+        </a>
+
+        <a class="contact-link" href="https://www.researchgate.net/profile/Filip-Fidanoski" target="_blank">
+          ResearchGate
+        </a>
+
+        <a class="contact-link" href="https://www.linkedin.com/in/filip-fidanoski-81017b4b/" target="_blank">
+          LinkedIn
+        </a>
+      </div>
     </section>
 
   </main>
