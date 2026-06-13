@@ -137,8 +137,8 @@
       color: var(--main);
       text-decoration: none;
       font-weight: bold;
-      margin: 0 9px;
-      font-size: 0.92rem;
+      margin: 0 8px;
+      font-size: 0.91rem;
     }
 
     nav a:hover {
@@ -178,6 +178,26 @@
       font-size: 1.04rem;
     }
 
+    .research-lead {
+      background: linear-gradient(135deg, var(--main), var(--accent));
+      color: white;
+      border-radius: 26px;
+      padding: 30px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .research-lead h3 {
+      color: white;
+      margin-top: 0;
+      font-size: 1.65rem;
+    }
+
+    .research-lead p {
+      margin-bottom: 0;
+      max-width: 920px;
+    }
+
     .research-slider {
       display: grid;
       grid-template-columns: repeat(4, minmax(250px, 1fr));
@@ -214,7 +234,7 @@
 
     .research-slide h3 {
       color: white;
-      font-size: 1.32rem;
+      font-size: 1.25rem;
       margin-top: 10px;
       position: relative;
       z-index: 1;
@@ -247,6 +267,12 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     }
 
+    .tag.dark {
+      background: rgba(255, 255, 255, 0.14);
+      color: white;
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -272,7 +298,8 @@
     .education-card:hover,
     .simple-card:hover,
     .publication-card:hover,
-    .project-card:hover {
+    .project-card:hover,
+    .video-card:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow);
     }
@@ -352,7 +379,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(7, 29, 54, 0.08) 0%, rgba(7, 29, 54, 0.15) 45%, rgba(7, 29, 54, 0.82) 100%);
+        linear-gradient(180deg, rgba(7, 29, 54, 0.04) 0%, rgba(7, 29, 54, 0.14) 45%, rgba(7, 29, 54, 0.84) 100%);
       pointer-events: none;
     }
 
@@ -470,6 +497,65 @@
       box-shadow: var(--soft-shadow);
     }
 
+    .video-card {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 24px;
+      align-items: center;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--soft-shadow);
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .video-thumb {
+      min-height: 310px;
+      background: #071d36;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      min-height: 310px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7, 29, 54, 0.05), rgba(7, 29, 54, 0.55));
+    }
+
+    .play-button {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.93);
+      color: var(--main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      z-index: 2;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .video-body {
+      padding: 28px;
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
@@ -512,6 +598,10 @@
 
     @media (max-width: 900px) {
       .research-slider {
+        grid-template-columns: 1fr;
+      }
+
+      .video-card {
         grid-template-columns: 1fr;
       }
     }
@@ -624,46 +714,69 @@
           University of New South Wales. My dissertation was titled
           <em>Essays on risk and time preference elicitation</em>.
         </p>
+
+        <div class="tag-cloud">
+          <span class="tag">🇲🇰 Nationality: Macedonian</span>
+          <span class="tag">🇨🇳 Chinese work permit</span>
+          <span class="tag">Based in Hangzhou</span>
+        </div>
       </div>
     </section>
 
     <section id="research">
       <h2>Research Interests</h2>
 
+      <div class="research-lead">
+        <h3>Experimental and Behavioural Economics</h3>
+        <p>
+          My work uses incentivised laboratory and online experiments to study decision-making
+          under risk, uncertainty, ambiguity, beliefs, time delay, and social responsibility.
+          A central methodological concern across my projects is credible, reproducible,
+          and robust behavioural measurement.
+        </p>
+        <div class="tag-cloud">
+          <span class="tag dark">Hypothetical bias</span>
+          <span class="tag dark">Robustness</span>
+          <span class="tag dark">Reproducibility</span>
+          <span class="tag dark">Credibility</span>
+          <span class="tag dark">Experimental methodology</span>
+        </div>
+      </div>
+
       <div class="research-slider">
         <div class="research-slide slide-1">
           <div class="research-number">01</div>
-          <h3>Behavioural and Experimental Economics</h3>
+          <h3>Risk, Time, Beliefs, and Ambiguity</h3>
           <p>
-            Laboratory and online experiments on how people make choices under uncertainty,
-            incentives, responsibility, and institutional constraints.
+            Preference elicitation, latent risk preferences, intertemporal choice,
+            beliefs, ambiguity, and the resolution of uncertainty across domains.
           </p>
         </div>
 
         <div class="research-slide slide-2">
           <div class="research-number">02</div>
-          <h3>Decision Theory</h3>
+          <h3>Decision-Making for Others and Paternalism</h3>
           <p>
-            Risk, time, beliefs, ambiguity, intertemporal choice, preference elicitation,
-            and the resolution of uncertainty across decision contexts.
+            Delegated choices, paternalism, responsibility aversion, preference projection,
+            self–other gaps, and preference aggregation.
           </p>
         </div>
 
         <div class="research-slide slide-3">
           <div class="research-number">03</div>
-          <h3>Decision-Making for Others</h3>
+          <h3>Climate, AI, and Public Economics</h3>
           <p>
-            Delegated choices, paternalism, preference aggregation, responsibility aversion,
-            and self–other gaps in incentivised economic decisions.
+            Climate-related behavioural choices, energy decisions, algorithmic delegation,
+            economics of AI, and public-policy-relevant uncertainty.
           </p>
         </div>
 
         <div class="research-slide slide-4">
           <div class="research-number">04</div>
-          <h3>Climate, AI, and Public Decisions</h3>
+          <h3>Strategic and Institutional Design</h3>
           <p>
-            Climate-related behavioural choices, energy decisions, algorithmic delegation,
-            economics of AI, and policy-relevant uncertainty.
+            Auctions, game theory, mechanism design, persuasion, strategic behaviour,
+            open science, and the replication crisis.
           </p>
         </div>
       </div>
@@ -671,14 +784,19 @@
       <div class="tag-cloud">
         <span class="tag">Risk Preferences</span>
         <span class="tag">Time Preferences</span>
-        <span class="tag">Ambiguity</span>
         <span class="tag">Beliefs</span>
+        <span class="tag">Ambiguity</span>
+        <span class="tag">Paternalism</span>
+        <span class="tag">Decision-Making for Others</span>
         <span class="tag">Climate Choices</span>
-        <span class="tag">Delegation</span>
-        <span class="tag">Algorithmic Aversion</span>
-        <span class="tag">Incentives</span>
-        <span class="tag">Experimental Methodology</span>
+        <span class="tag">Algorithmic Delegation</span>
+        <span class="tag">Economics of AI</span>
+        <span class="tag">Public Economics</span>
+        <span class="tag">Auctions</span>
+        <span class="tag">Game Theory</span>
+        <span class="tag">Mechanism Design</span>
         <span class="tag">Open Science</span>
+        <span class="tag">Replication Crisis</span>
       </div>
     </section>
 
@@ -748,6 +866,10 @@
           </p>
           <p>
             Supervisory team: Andreas Ortmann, Vinayak Dixit, and Glenn W. Harrison.
+          </p>
+          <p>
+            <strong>Funding:</strong> Scientia Scholarship and Australian Government Research
+            Training Program Scholarship (HDR Completion Scholarship).
           </p>
         </div>
       </div>
@@ -846,9 +968,9 @@
           <div class="project-icon">🌍</div>
           <h3>Climate Choices and Decisions for Others</h3>
           <p>
-            Decision-making for others under ambiguity and risk in the climate-change domain;
-            climate choices, paternalism, preference projection, responsibility, aggregation,
-            incentives, and the resolution of uncertainty.
+            Laboratory and online experiments on decision-making for others under ambiguity
+            and risk in the climate-change domain; climate choices, paternalism, preference
+            projection, responsibility, aggregation, incentives, and the resolution of uncertainty.
           </p>
         </div>
 
@@ -877,8 +999,8 @@
           <h3>Experimental Methodology</h3>
           <p>
             Laboratory and online experiments, incentive-compatible elicitation, experimental
-            programming, preference measurement, and graphical versus visual presentation of
-            the DEEP method.
+            programming, preference measurement, robustness checks, reproducibility, credibility,
+            and graphical versus visual presentation of the DEEP method.
           </p>
         </div>
 
@@ -887,7 +1009,8 @@
           <h3>Meta-Analysis and Evidence Synthesis</h3>
           <p>
             Meta-analysis of latent risk preferences across contexts, bibliometric analysis,
-            and survey work on elicitation methods, preference stability, and replication.
+            and survey work on elicitation methods, preference stability, robustness,
+            credibility, and replication.
           </p>
         </div>
 
@@ -896,7 +1019,7 @@
           <h3>Persuasion and Strategic Behaviour</h3>
           <p>
             Optimal persuasion in the laboratory and experimental work on strategic behaviour,
-            persuasion, beliefs, information, and decision environments.
+            persuasion, beliefs, information, mechanism design, and decision environments.
           </p>
         </div>
 
@@ -931,18 +1054,22 @@
         <div class="skills-box">
           <h3>Programming and Research Tools</h3>
           <p>
-            LaTeX, Mathematica, MATLAB, Microsoft Office (+VBA), oTree, Python,
-            R, Stata, Tableau, z-Tree, and z-Tree unleashed.
+            G*Power, JavaScript, LaTeX, Mathematica, MATLAB, Microsoft Office (+VBA),
+            oTree, PHP, Python, R, SQL, Stata, Tableau, z-Tree, and z-Tree unleashed.
           </p>
 
           <div class="tag-cloud">
+            <span class="tag">G*Power</span>
+            <span class="tag">JavaScript</span>
             <span class="tag">LaTeX</span>
             <span class="tag">Mathematica</span>
             <span class="tag">MATLAB</span>
             <span class="tag">Office + VBA</span>
             <span class="tag">oTree</span>
+            <span class="tag">PHP</span>
             <span class="tag">Python</span>
             <span class="tag">R</span>
+            <span class="tag">SQL</span>
             <span class="tag">Stata</span>
             <span class="tag">Tableau</span>
             <span class="tag">z-Tree</span>
@@ -1021,18 +1148,20 @@
     <section id="media">
       <h2>Media Appearances</h2>
 
-      <div class="simple-card">
-        <div class="small-icon">▶️</div>
-        <h3>Selected media appearance</h3>
-        <p>
-          A selected public/media appearance is available on YouTube.
-        </p>
-        <p>
-          <a href="https://www.youtube.com/watch?v=czGGRhyUu3A" target="_blank">
-            Watch the video
-          </a>
-        </p>
-      </div>
+      <a class="video-card" href="https://www.youtube.com/watch?v=czGGRhyUu3A" target="_blank">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/czGGRhyUu3A/hqdefault.jpg" alt="YouTube video thumbnail">
+          <div class="play-button">▶</div>
+        </div>
+
+        <div class="video-body">
+          <span class="badge">Video</span>
+          <h3>Selected media appearance</h3>
+          <p>
+            Click the image to watch the video on YouTube.
+          </p>
+        </div>
+      </a>
     </section>
 
     <section id="contact">
