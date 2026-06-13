@@ -94,9 +94,9 @@
     }
 
     header p {
-      max-width: 760px;
+      max-width: 820px;
       margin: 18px 0 0;
-      font-size: 1.25rem;
+      font-size: 1.22rem;
       color: #e7eef7;
     }
 
@@ -137,8 +137,8 @@
       color: var(--main);
       text-decoration: none;
       font-weight: bold;
-      margin: 0 10px;
-      font-size: 0.93rem;
+      margin: 0 9px;
+      font-size: 0.92rem;
     }
 
     nav a:hover {
@@ -180,17 +180,12 @@
 
     .research-slider {
       display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(290px, 1fr);
+      grid-template-columns: repeat(4, minmax(250px, 1fr));
       gap: 20px;
-      overflow-x: auto;
-      padding: 8px 4px 24px;
-      scroll-snap-type: x mandatory;
     }
 
     .research-slide {
       min-height: 255px;
-      scroll-snap-align: start;
       border-radius: 24px;
       padding: 26px;
       color: white;
@@ -219,7 +214,7 @@
 
     .research-slide h3 {
       color: white;
-      font-size: 1.38rem;
+      font-size: 1.32rem;
       margin-top: 10px;
       position: relative;
       z-index: 1;
@@ -286,13 +281,13 @@
       width: 110px;
       height: 110px;
       border-radius: 20px;
-      background: var(--light);
+      background: #ffffff;
       border: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      padding: 13px;
+      padding: 11px;
     }
 
     .logo-box img {
@@ -300,15 +295,6 @@
       max-height: 100%;
       object-fit: contain;
       display: block;
-    }
-
-    .text-logo {
-      background: linear-gradient(135deg, var(--main), var(--accent));
-      color: white;
-      font-weight: bold;
-      font-size: 1.2rem;
-      text-align: center;
-      letter-spacing: 1px;
     }
 
     .year {
@@ -325,7 +311,7 @@
     .publication-grid,
     .working-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 24px;
     }
 
@@ -344,19 +330,43 @@
     }
 
     .cover {
-      height: 310px;
+      height: 285px;
       background: linear-gradient(135deg, rgba(18, 53, 91, 0.95), rgba(31, 111, 139, 0.88));
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
 
     .cover img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: top center;
       display: block;
+    }
+
+    .cover::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(7, 29, 54, 0.08) 0%, rgba(7, 29, 54, 0.15) 45%, rgba(7, 29, 54, 0.82) 100%);
+      pointer-events: none;
+    }
+
+    .cover-title {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      color: white;
+      z-index: 2;
+      font-weight: bold;
+      font-size: 1.12rem;
+      line-height: 1.35;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
     }
 
     .publication-body {
@@ -500,6 +510,12 @@
       font-size: 0.9rem;
     }
 
+    @media (max-width: 900px) {
+      .research-slider {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 760px) {
       .hero {
         grid-template-columns: 1fr;
@@ -556,10 +572,11 @@
       <img src="filip.jpg" alt="Filip Fidanoski" class="profile-photo">
 
       <div class="hero-text">
-        <span class="eyebrow">Experimental and Behavioural economics</span>
+        <span class="eyebrow">Experimental and behavioural economics</span>
         <h1>Filip Fidanoski</h1>
         <p>
-          Research Fellow (Post-Doc) in Behavioural Decision-Making<br>
+          Postdoctoral Research Fellow in Behavioural Decision-Making<br>
+          Department of Data Science and Engineering Management<br>
           School of Management, Zhejiang University
         </p>
 
@@ -567,6 +584,7 @@
           <a href="#research">Research</a>
           <a href="#publications">Publications</a>
           <a href="#working-papers">Working Papers</a>
+          <a href="#projects">Projects</a>
           <a href="#service">Service</a>
           <a href="#contact">Contact</a>
         </div>
@@ -584,6 +602,7 @@
     <a href="#projects">Projects</a>
     <a href="#software">Software</a>
     <a href="#service">Service</a>
+    <a href="#media">Media</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -595,8 +614,9 @@
         <p>
           I am an experimental and behavioural economist. My research studies how people make
           decisions under risk, uncertainty, ambiguity, time delay, and responsibility for others.
-          I use laboratory and field experiments to examine individual and delegated decision-making,
-          with applications to climate choices, algorithmic delegation, and public policy.
+          I use laboratory and online experiments, incentivised decision tasks, and behavioural
+          models to examine individual and delegated decision-making, with applications to
+          climate choices, algorithmic delegation, and public policy.
         </p>
 
         <p>
@@ -615,7 +635,7 @@
           <div class="research-number">01</div>
           <h3>Behavioural and Experimental Economics</h3>
           <p>
-            Laboratory and field experiments on how people make choices under uncertainty,
+            Laboratory and online experiments on how people make choices under uncertainty,
             incentives, responsibility, and institutional constraints.
           </p>
         </div>
@@ -625,7 +645,7 @@
           <h3>Decision Theory</h3>
           <p>
             Risk, time, beliefs, ambiguity, intertemporal choice, preference elicitation,
-            and the consistency of latent preferences across contexts.
+            and the resolution of uncertainty across decision contexts.
           </p>
         </div>
 
@@ -634,7 +654,7 @@
           <h3>Decision-Making for Others</h3>
           <p>
             Delegated choices, paternalism, preference aggregation, responsibility aversion,
-            and self–other gaps in economic decision-making.
+            and self–other gaps in incentivised economic decisions.
           </p>
         </div>
 
@@ -643,7 +663,7 @@
           <h3>Climate, AI, and Public Decisions</h3>
           <p>
             Climate-related behavioural choices, energy decisions, algorithmic delegation,
-            economics of AI, and public-policy-relevant uncertainty.
+            economics of AI, and policy-relevant uncertainty.
           </p>
         </div>
       </div>
@@ -656,7 +676,8 @@
         <span class="tag">Climate Choices</span>
         <span class="tag">Delegation</span>
         <span class="tag">Algorithmic Aversion</span>
-        <span class="tag">Paternalism</span>
+        <span class="tag">Incentives</span>
+        <span class="tag">Experimental Methodology</span>
         <span class="tag">Open Science</span>
       </div>
     </section>
@@ -671,16 +692,17 @@
 
         <div>
           <span class="year">2026–</span>
-          <h3>Research Fellow in Behavioural Decision-Making</h3>
+          <h3>Postdoctoral Research Fellow in Behavioural Decision-Making</h3>
           <p>
+            Department of Data Science and Engineering Management,
             School of Management, Zhejiang University, Hangzhou, Zhejiang Province, P. R. China.
           </p>
         </div>
       </div>
 
       <div class="position-card">
-        <div class="logo-box text-logo">
-          <span>CNRS<br>UniCA</span>
+        <div class="logo-box">
+          <img src="gredeg.jfif" alt="GREDEG and Université Côte d'Azur logo">
         </div>
 
         <div>
@@ -693,8 +715,8 @@
       </div>
 
       <div class="position-card">
-        <div class="logo-box text-logo">
-          <span>UNIBO</span>
+        <div class="logo-box">
+          <img src="unibo.png" alt="University of Bologna logo">
         </div>
 
         <div>
@@ -732,13 +754,14 @@
     </section>
 
     <section id="publications">
-      <h2>Selected Publications After PhD Degree</h2>
+      <h2>Selected Publications (After PhD Degree)</h2>
 
       <div class="publication-grid">
 
         <a class="publication-card" href="https://www.sciencedirect.com/science/article/pii/S2214635023000199" target="_blank">
           <div class="cover">
             <img src="deep-cover.jpg" alt="DEEP article cover">
+            <div class="cover-title">Dynamic Experiments for Estimating Preferences [DEEP]</div>
           </div>
           <div class="publication-body">
             <span class="badge">Journal article</span>
@@ -755,6 +778,7 @@
         <a class="publication-card" href="https://www.routledge.com/Financial-Innovation-and-Sustainability-Green-Blue-and-Sustainable-Finance/Ziolo-Zaleskaja/p/book/9781032262458" target="_blank">
           <div class="cover">
             <img src="routledge-cover.jpg" alt="Sustainable Finance chapter cover">
+            <div class="cover-title">Sustainable Finance</div>
           </div>
           <div class="publication-body">
             <span class="badge">Book chapter</span>
@@ -779,6 +803,7 @@
         <a class="publication-card" href="https://ideas.repec.org/p/zbw/i4rdps/205.html" target="_blank">
           <div class="cover">
             <img src="replication-cover.jpg" alt="I4R replication paper cover">
+            <div class="cover-title">Risky Choices and Intertemporal Choices Have a Common Value Function, But a Separate Choice Function</div>
           </div>
           <div class="publication-body">
             <span class="badge">I4R Discussion Paper</span>
@@ -795,6 +820,7 @@
         <a class="publication-card" href="https://ssrn.com/abstract=6075569" target="_blank">
           <div class="cover">
             <img src="ai-paper-cover.jpg" alt="Algorithmic delegation working paper cover">
+            <div class="cover-title">Choosing Between Algorithmic Forecasters: What Drives Delegation?</div>
           </div>
           <div class="publication-body">
             <span class="badge">SSRN working paper</span>
@@ -821,16 +847,18 @@
           <h3>Climate Choices and Decisions for Others</h3>
           <p>
             Decision-making for others under ambiguity and risk in the climate-change domain;
-            climate choices, paternalism, preference projection, responsibility, and aggregation.
+            climate choices, paternalism, preference projection, responsibility, aggregation,
+            incentives, and the resolution of uncertainty.
           </p>
         </div>
 
         <div class="project-card">
           <div class="project-icon">⏳</div>
-          <h3> Latent risk and time and Preferences</h3>
+          <h3>Latent Risk and Time Preferences</h3>
           <p>
             Risky intertemporal choices, latent risk preferences, temporal stability,
-            Bayesian analysis, and preference consistency across contexts and domains.
+            Bayesian analysis, preference consistency across contexts and domains,
+            and experimental elicitation methodology.
           </p>
         </div>
 
@@ -839,7 +867,18 @@
           <h3>Algorithmic Delegation and AI</h3>
           <p>
             Delegation to algorithmic and human forecasters, error magnitude and frequency,
-            expected payoffs, comparative evaluation, and energy decisions.
+            expected payoffs, comparative evaluation, energy decisions, and online
+            experimental designs with incentivised choices.
+          </p>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">🧪</div>
+          <h3>Experimental Methodology</h3>
+          <p>
+            Laboratory and online experiments, incentive-compatible elicitation, experimental
+            programming, preference measurement, and graphical versus visual presentation of
+            the DEEP method.
           </p>
         </div>
 
@@ -848,7 +887,7 @@
           <h3>Meta-Analysis and Evidence Synthesis</h3>
           <p>
             Meta-analysis of latent risk preferences across contexts, bibliometric analysis,
-            and survey work on elicitation methods and preference stability.
+            and survey work on elicitation methods, preference stability, and replication.
           </p>
         </div>
 
@@ -857,7 +896,7 @@
           <h3>Persuasion and Strategic Behaviour</h3>
           <p>
             Optimal persuasion in the laboratory and experimental work on strategic behaviour,
-            persuasion, and decision environments.
+            persuasion, beliefs, information, and decision environments.
           </p>
         </div>
 
@@ -976,6 +1015,23 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <section id="media">
+      <h2>Media Appearances</h2>
+
+      <div class="simple-card">
+        <div class="small-icon">▶️</div>
+        <h3>Selected media appearance</h3>
+        <p>
+          A selected public/media appearance is available on YouTube.
+        </p>
+        <p>
+          <a href="https://www.youtube.com/watch?v=czGGRhyUu3A" target="_blank">
+            Watch the video
+          </a>
+        </p>
       </div>
     </section>
 
