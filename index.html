@@ -137,8 +137,8 @@
       color: var(--main);
       text-decoration: none;
       font-weight: bold;
-      margin: 0 12px;
-      font-size: 0.95rem;
+      margin: 0 10px;
+      font-size: 0.93rem;
     }
 
     nav a:hover {
@@ -231,21 +231,10 @@
       margin-bottom: 0;
     }
 
-    .slide-1 {
-      background: linear-gradient(135deg, #12355b, #1f6f8b);
-    }
-
-    .slide-2 {
-      background: linear-gradient(135deg, #16405f, #3f8f78);
-    }
-
-    .slide-3 {
-      background: linear-gradient(135deg, #263b73, #6b7fd7);
-    }
-
-    .slide-4 {
-      background: linear-gradient(135deg, #5a3e7a, #b05f9c);
-    }
+    .slide-1 { background: linear-gradient(135deg, #12355b, #1f6f8b); }
+    .slide-2 { background: linear-gradient(135deg, #16405f, #3f8f78); }
+    .slide-3 { background: linear-gradient(135deg, #263b73, #6b7fd7); }
+    .slide-4 { background: linear-gradient(135deg, #5a3e7a, #b05f9c); }
 
     .tag-cloud {
       margin-top: 12px;
@@ -263,24 +252,13 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     }
 
-    .position-card {
+    .card-grid {
       display: grid;
-      grid-template-columns: 125px 1fr;
-      gap: 24px;
-      align-items: center;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: var(--soft-shadow);
-      margin-bottom: 22px;
-    }
-
-    .timeline {
-      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 22px;
     }
 
+    .position-card,
     .education-card {
       display: grid;
       grid-template-columns: 125px 1fr;
@@ -291,12 +269,16 @@
       border-radius: 22px;
       padding: 24px;
       box-shadow: var(--soft-shadow);
+      margin-bottom: 22px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
+    .position-card:hover,
     .education-card:hover,
-    .position-card:hover {
-      transform: translateY(-4px);
+    .simple-card:hover,
+    .publication-card:hover,
+    .project-card:hover {
+      transform: translateY(-5px);
       box-shadow: var(--shadow);
     }
 
@@ -317,19 +299,16 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
+      display: block;
     }
 
     .text-logo {
       background: linear-gradient(135deg, var(--main), var(--accent));
       color: white;
       font-weight: bold;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       text-align: center;
       letter-spacing: 1px;
-    }
-
-    .text-logo span {
-      line-height: 1.25;
     }
 
     .year {
@@ -343,9 +322,10 @@
       margin-bottom: 8px;
     }
 
-    .publication-grid {
+    .publication-grid,
+    .working-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
       gap: 24px;
     }
 
@@ -363,26 +343,20 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .publication-card:hover {
-      transform: translateY(-7px);
-      box-shadow: var(--shadow);
-    }
-
     .cover {
-      height: 300px;
+      height: 310px;
       background: linear-gradient(135deg, rgba(18, 53, 91, 0.95), rgba(31, 111, 139, 0.88));
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      text-align: center;
-      overflow: hidden;
     }
 
     .cover img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
     .publication-body {
@@ -410,19 +384,14 @@
       margin-bottom: 8px;
     }
 
-    .working-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
-      gap: 24px;
-    }
-
     .project-map {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 24px;
     }
 
-    .project-card {
+    .project-card,
+    .simple-card {
       position: relative;
       background: white;
       border: 1px solid var(--border);
@@ -433,12 +402,8 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-    }
-
-    .project-card::before {
+    .project-card::before,
+    .simple-card::before {
       content: "";
       position: absolute;
       top: 0;
@@ -448,7 +413,8 @@
       background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--gold));
     }
 
-    .project-icon {
+    .project-icon,
+    .small-icon {
       width: 56px;
       height: 56px;
       border-radius: 18px;
@@ -517,6 +483,15 @@
       color: var(--accent);
     }
 
+    .office {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--soft-shadow);
+      margin-top: 22px;
+    }
+
     footer {
       background: var(--main);
       color: #e7eef7;
@@ -568,7 +543,7 @@
       }
 
       .cover {
-        height: 260px;
+        height: 265px;
       }
     }
   </style>
@@ -584,7 +559,7 @@
         <span class="eyebrow">Experimental and behavioural economics</span>
         <h1>Filip Fidanoski</h1>
         <p>
-          Research Fellow in Behavioural Decision Theory<br>
+          Research Fellow in Behavioural Decision-Making<br>
           School of Management, Zhejiang University
         </p>
 
@@ -592,7 +567,7 @@
           <a href="#research">Research</a>
           <a href="#publications">Publications</a>
           <a href="#working-papers">Working Papers</a>
-          <a href="#software">Software</a>
+          <a href="#service">Service</a>
           <a href="#contact">Contact</a>
         </div>
       </div>
@@ -602,12 +577,13 @@
   <nav>
     <a href="#about">About</a>
     <a href="#research">Research</a>
-    <a href="#position">Position</a>
+    <a href="#positions">Positions</a>
     <a href="#education">Education</a>
     <a href="#publications">Publications</a>
     <a href="#working-papers">Working Papers</a>
     <a href="#projects">Projects</a>
     <a href="#software">Software</a>
+    <a href="#service">Service</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -664,10 +640,10 @@
 
         <div class="research-slide slide-4">
           <div class="research-number">04</div>
-          <h3>Climate and Algorithmic Decisions</h3>
+          <h3>Climate, AI, and Public Decisions</h3>
           <p>
             Climate-related behavioural choices, energy decisions, algorithmic delegation,
-            and the role of uncertainty in public-policy-relevant decisions.
+            economics of AI, and public-policy-relevant uncertainty.
           </p>
         </div>
       </div>
@@ -685,8 +661,8 @@
       </div>
     </section>
 
-    <section id="position">
-      <h2>Current Position</h2>
+    <section id="positions">
+      <h2>Academic Positions</h2>
 
       <div class="position-card">
         <div class="logo-box">
@@ -694,15 +670,38 @@
         </div>
 
         <div>
-          <span class="year">Current</span>
-          <h3>Research Fellow in Behavioural Decision Theory</h3>
+          <span class="year">2026–</span>
+          <h3>Research Fellow in Behavioural Decision-Making</h3>
           <p>
-            School of Management, Zhejiang University.
+            School of Management, Zhejiang University, Hangzhou, Zhejiang Province, P. R. China.
           </p>
+        </div>
+      </div>
+
+      <div class="position-card">
+        <div class="logo-box text-logo">
+          <span>CNRS<br>UniCA</span>
+        </div>
+
+        <div>
+          <span class="year">2024–2025</span>
+          <h3>IdEx Excellence Research Fellow</h3>
           <p>
-            My current work develops experimental and behavioural approaches to
-            decision-making under uncertainty, with a focus on delegation,
-            algorithmic advice, and climate-related choices.
+            CNRS-GREDEG, Université Côte d'Azur, France.
+          </p>
+        </div>
+      </div>
+
+      <div class="position-card">
+        <div class="logo-box text-logo">
+          <span>UNIBO</span>
+        </div>
+
+        <div>
+          <span class="year">2022–2023</span>
+          <h3>Research Fellow</h3>
+          <p>
+            Department of Economics, University of Bologna, Bologna, Emilia-Romagna, Italy.
           </p>
         </div>
       </div>
@@ -711,61 +710,29 @@
     <section id="education">
       <h2>Education</h2>
 
-      <div class="timeline">
-
-        <div class="education-card">
-          <div class="logo-box">
-            <img src="unsw-logo.png" alt="UNSW logo">
-          </div>
-          <div>
-            <span class="year">2018–2022 · awarded 2023</span>
-            <h3>PhD in Economics</h3>
-            <p>
-              School of Economics, UNSW Business School, University of New South Wales,
-              Sydney, Australia.
-            </p>
-            <p>
-              Dissertation: <em>Essays on risk and time preference elicitation</em>.
-            </p>
-            <p>
-              Supervisory team: Andreas Ortmann, Vinayak Dixit, and Glenn W. Harrison.
-            </p>
-          </div>
+      <div class="education-card">
+        <div class="logo-box">
+          <img src="unsw-logo.png" alt="UNSW logo">
         </div>
-
-        <div class="education-card">
-          <div class="logo-box">
-            <img src="unsw-logo.png" alt="UNSW logo">
-          </div>
-          <div>
-            <span class="year">2018–2019</span>
-            <h3>MA in Economics</h3>
-            <p>
-              School of Economics, UNSW Business School, University of New South Wales,
-              Sydney, Australia.
-            </p>
-          </div>
+        <div>
+          <span class="year">2018–2022 · awarded February 2023</span>
+          <h3>PhD in Economics</h3>
+          <p>
+            School of Economics, UNSW Business School, University of New South Wales,
+            Sydney, Australia.
+          </p>
+          <p>
+            Dissertation: <em>Essays on risk and time preference elicitation</em>.
+          </p>
+          <p>
+            Supervisory team: Andreas Ortmann, Vinayak Dixit, and Glenn W. Harrison.
+          </p>
         </div>
-
-        <div class="education-card">
-          <div class="logo-box text-logo">
-            <span>MSc<br>BSc</span>
-          </div>
-          <div>
-            <span class="year">2014–2015 · 2009–2013</span>
-            <h3>MSc and BSc in Economics</h3>
-            <p>
-              Faculty of Economics, Ss Cyril and Methodius University in Skopje,
-              Macedonia.
-            </p>
-          </div>
-        </div>
-
       </div>
     </section>
 
     <section id="publications">
-      <h2>Selected Publications</h2>
+      <h2>Selected Publications After PhD Degree</h2>
 
       <div class="publication-grid">
 
@@ -796,7 +763,7 @@
               Simeonovski, K., Sazdovski, I., and Fidanoski, F. (2025).
             </p>
             <p class="publication-meta">
-              In Financial Innovation and Sustainability. Routledge.
+              In <em>Financial Innovation and Sustainability: Green, Blue and Sustainable Finance</em>. Routledge.
             </p>
           </div>
         </a>
@@ -815,7 +782,7 @@
           </div>
           <div class="publication-body">
             <span class="badge">I4R Discussion Paper</span>
-            <h3>Risky Intertemporal Choices Have a Common Value Function, But a Separate Choice Function</h3>
+            <h3>Risky Choices and Intertemporal Choices Have a Common Value Function, But a Separate Choice Function</h3>
             <p>
               Fidanoski, F., Dixit, V., and Ortmann, A. (2025).
             </p>
@@ -825,18 +792,18 @@
           </div>
         </a>
 
-        <a class="publication-card" href="#contact">
+        <a class="publication-card" href="https://ssrn.com/abstract=6075569" target="_blank">
           <div class="cover">
             <img src="ai-paper-cover.jpg" alt="Algorithmic delegation working paper cover">
           </div>
           <div class="publication-body">
-            <span class="badge">Working paper</span>
+            <span class="badge">SSRN working paper</span>
             <h3>Choosing Between Algorithmic Forecasters: What Drives Delegation?</h3>
             <p>
               Chevrier, M., Fidanoski, F., and Teixeira, V.
             </p>
             <p class="publication-meta">
-              Available upon request.
+              SSRN Working Paper No. 6075569.
             </p>
           </div>
         </a>
@@ -851,37 +818,55 @@
 
         <div class="project-card">
           <div class="project-icon">🌍</div>
-          <h3>Climate choices for others</h3>
+          <h3>Climate Choices and Decisions for Others</h3>
           <p>
-            Experimental work on decision-making for others under ambiguous conditions
-            in the domain of climate change.
+            Decision-making for others under ambiguity and risk in the climate-change domain;
+            climate choices, paternalism, preference projection, responsibility, and aggregation.
           </p>
         </div>
 
         <div class="project-card">
           <div class="project-icon">⏳</div>
-          <h3>Risk and time preferences</h3>
+          <h3>Risk, Time, and Latent Preferences</h3>
           <p>
-            Research on the elicitation, consistency, and temporal stability of latent
-            risk preferences across contexts and domains.
+            Risky intertemporal choices, latent risk preferences, temporal stability,
+            Bayesian analysis, and preference consistency across contexts and domains.
           </p>
         </div>
 
         <div class="project-card">
           <div class="project-icon">🤖</div>
-          <h3>Algorithmic delegation</h3>
+          <h3>Algorithmic Delegation and AI</h3>
           <p>
-            Research on how people delegate forecasting decisions to human and algorithmic agents,
-            especially in energy-related decisions.
+            Delegation to algorithmic and human forecasters, error magnitude and frequency,
+            expected payoffs, comparative evaluation, and energy decisions.
           </p>
         </div>
 
         <div class="project-card">
-          <div class="project-icon">🧭</div>
-          <h3>Decision-making for others</h3>
+          <div class="project-icon">📚</div>
+          <h3>Meta-Analysis and Evidence Synthesis</h3>
           <p>
-            Work on self–other gaps, paternalism, responsibility aversion,
-            preference projection, and preference aggregation.
+            Meta-analysis of latent risk preferences across contexts, bibliometric analysis,
+            and survey work on elicitation methods and preference stability.
+          </p>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">🎯</div>
+          <h3>Persuasion and Strategic Behaviour</h3>
+          <p>
+            Optimal persuasion in the laboratory and experimental work on strategic behaviour,
+            persuasion, and decision environments.
+          </p>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon">📈</div>
+          <h3>Corporate Takeovers and Premia</h3>
+          <p>
+            Experimental insights into takeover premia and the behavioural dynamics
+            underlying corporate takeover decisions.
           </p>
         </div>
 
@@ -889,7 +874,7 @@
     </section>
 
     <section id="software">
-      <h2>Software</h2>
+      <h2>Software and Research Tools</h2>
 
       <div class="software-panel">
         <div class="software-feature">
@@ -907,22 +892,90 @@
         <div class="skills-box">
           <h3>Programming and Research Tools</h3>
           <p>
-            R, Python, Julia, JavaScript, MATLAB, Mathematica, STATA, LaTeX,
-            oTree, z-Tree, z-Tree unleashed, G*Power, Tableau, Microsoft Office,
-            and NVivo.
+            LaTeX, Mathematica, MATLAB, Microsoft Office (+VBA), oTree, Python,
+            R, Stata, Tableau, z-Tree, and z-Tree unleashed.
           </p>
 
           <div class="tag-cloud">
-            <span class="tag">R</span>
-            <span class="tag">Python</span>
-            <span class="tag">STATA</span>
-            <span class="tag">oTree</span>
-            <span class="tag">z-Tree</span>
             <span class="tag">LaTeX</span>
-            <span class="tag">JavaScript</span>
+            <span class="tag">Mathematica</span>
             <span class="tag">MATLAB</span>
+            <span class="tag">Office + VBA</span>
+            <span class="tag">oTree</span>
+            <span class="tag">Python</span>
+            <span class="tag">R</span>
+            <span class="tag">Stata</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">z-Tree</span>
+            <span class="tag">z-Tree unleashed</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="service">
+      <h2>Academic Service, Reviewing, and Memberships</h2>
+
+      <div class="card-grid">
+
+        <div class="simple-card">
+          <div class="small-icon">📝</div>
+          <h3>Reviewer</h3>
+          <div class="tag-cloud">
+            <span class="tag">Journal of Economic Behavior and Organization</span>
+            <span class="tag">Experimental Economics</span>
+            <span class="tag">Journal of Economic Psychology</span>
+            <span class="tag">Physics Letters A</span>
+            <span class="tag">Journal of Behavioral and Experimental Economics</span>
+            <span class="tag">Technological and Economic Development of Economy</span>
+            <span class="tag">International Journal of Business and Globalisation</span>
+            <span class="tag">International Journal of Emerging Markets</span>
+            <span class="tag">Journal of Economic Surveys</span>
+          </div>
+        </div>
+
+        <div class="simple-card">
+          <div class="small-icon">🌐</div>
+          <h3>Memberships and Societies</h3>
+          <div class="tag-cloud">
+            <span class="tag">Managing Board, Foundation “Antevo Pero” – Skopje</span>
+            <span class="tag">Society for Experimental Finance</span>
+            <span class="tag">Economic Science Association</span>
+            <span class="tag">Society of Judgement and Decision-making</span>
+            <span class="tag">Society for Economic Measurement</span>
+          </div>
+        </div>
+
+        <div class="simple-card">
+          <div class="small-icon">🗣️</div>
+          <h3>Languages</h3>
+          <div class="tag-cloud">
+            <span class="tag">Macedonian · native</span>
+            <span class="tag">English · fluent</span>
+            <span class="tag">Serbian-Croatian · fluent</span>
+            <span class="tag">Russian · fluent</span>
+            <span class="tag">Bulgarian · intermediate</span>
+            <span class="tag">French · intermediate</span>
+          </div>
+        </div>
+
+        <div class="simple-card">
+          <div class="small-icon">🎭</div>
+          <h3>Interests</h3>
+          <div class="tag-cloud">
+            <span class="tag">Art</span>
+            <span class="tag">Chess</span>
+            <span class="tag">Galleries and museums</span>
+            <span class="tag">History</span>
+            <span class="tag">Jogging</span>
+            <span class="tag">Literature and poetry</span>
+            <span class="tag">Old movies</span>
+            <span class="tag">Skiing</span>
+            <span class="tag">Swimming</span>
+            <span class="tag">Theatre</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -931,10 +984,16 @@
 
       <p>
         <strong>Email:</strong>
+        <a href="mailto:f.fidanoski@zju.edu.cn">f.fidanoski@zju.edu.cn</a>
+        or
         <a href="mailto:filipfidanoski@gmail.com">filipfidanoski@gmail.com</a>
       </p>
 
       <div class="contact-grid">
+        <a class="contact-link" href="https://person.zju.edu.cn/en/filipfidanoski" target="_blank">
+          University Webpage
+        </a>
+
         <a class="contact-link" href="https://scholar.google.com/citations?user=tziEf2cAAAAJ&hl=en" target="_blank">
           Google Scholar
         </a>
@@ -958,6 +1017,14 @@
         <a class="contact-link" href="https://www.linkedin.com/in/filip-fidanoski-81017b4b/" target="_blank">
           LinkedIn
         </a>
+      </div>
+
+      <div class="office">
+        <h3>Office Address</h3>
+        <p>
+          Office A418, SOM Building, Zijingang Campus, No. 866 Yuhangtang Road,
+          Xihu District, Hangzhou, Zhejiang Province, P. R. China, 310058.
+        </p>
       </div>
     </section>
 
