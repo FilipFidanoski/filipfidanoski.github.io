@@ -484,9 +484,54 @@
       margin-top: 0;
     }
 
+    .software-feature {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
     .software-feature a {
       color: white;
       font-weight: bold;
+    }
+
+    .software-box-link {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      text-indent: -9999px;
+      overflow: hidden;
+    }
+
+    .software-hover-note {
+      position: absolute;
+      right: 22px;
+      bottom: 18px;
+      z-index: 3;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: white;
+      font-weight: bold;
+      letter-spacing: 0.02em;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
+      pointer-events: none;
+    }
+
+    .software-feature:hover .software-hover-note,
+    .software-feature:focus-within .software-hover-note {
+      opacity: 1;
+      transform: translateY(0);
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .software-feature:hover .deep-step,
+    .software-feature:focus-within .deep-step {
+      background: rgba(255, 255, 255, 0.18);
     }
 
     .skills-box {
@@ -715,11 +760,11 @@
     }
 
     .replication-cover img {
-      object-position: center top;
+      object-position: center 76%;
     }
 
     .ai-cover img {
-      object-position: center 32%;
+      object-position: center 12%;
     }
 
     .deep-loop {
@@ -1045,6 +1090,31 @@
       display: block;
       font-size: 1.55rem;
       margin-bottom: 3px;
+    }
+
+    .tool-sticker-cloud {
+      margin: 18px 0 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tool-sticker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f8fbff, #eef6fb);
+      border: 1px solid var(--border);
+      color: var(--main);
+      font-weight: bold;
+      font-size: 0.88rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    .tool-sticker .emoji {
+      font-size: 1rem;
     }
 
     @media (max-width: 980px) {
@@ -1577,14 +1647,10 @@
 
       <div class="software-panel">
         <div class="software-feature">
+          <a class="software-box-link" href="https://github.com/FilipFidanoski/DEEP_z-tree" target="_blank" aria-label="Open DEEP z-Tree Implementation on GitHub">Open DEEP z-Tree Implementation on GitHub</a>
           <h3>DEEP z-Tree Implementation</h3>
           <p>
             A z-Tree implementation of Dynamic Experiments for Estimating Preferences.
-          </p>
-          <p>
-            <a href="https://github.com/FilipFidanoski/DEEP_z-tree" target="_blank">
-              View on GitHub
-            </a>
           </p>
 
           <div class="deep-loop" aria-label="DEEP adaptive elicitation workflow">
@@ -1596,10 +1662,21 @@
             <div class="deep-arrow">→</div>
             <div class="deep-step"><span>④</span>Preference estimate</div>
           </div>
+          <div class="software-hover-note">View on GitHub ↗</div>
         </div>
 
         <div class="skills-box">
           <h3>Programming and Research Tools</h3>
+
+          <div class="tool-sticker-cloud" aria-label="Creative stickers for programming and research tools">
+            <span class="tool-sticker"><span class="emoji">📊</span>#RStata</span>
+            <span class="tool-sticker"><span class="emoji">🐍</span>#PythonWorkflows</span>
+            <span class="tool-sticker"><span class="emoji">🧪</span>#oTreezTree</span>
+            <span class="tool-sticker"><span class="emoji">🌐</span>#SQLPHPJS</span>
+            <span class="tool-sticker"><span class="emoji">📐</span>#GPower</span>
+            <span class="tool-sticker"><span class="emoji">📄</span>#LaTeX</span>
+            <span class="tool-sticker"><span class="emoji">🧠</span>#OpenScience</span>
+          </div>
 
           <div class="tag-cloud">
             <span class="tag">Github</span>
