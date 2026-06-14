@@ -596,8 +596,395 @@
       font-size: 0.9rem;
     }
 
+
+
+    /* --- Citation metrics at the top --- */
+    .metrics-strip {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(170px, 1fr));
+      gap: 14px;
+      max-width: 850px;
+    }
+
+    .metric-card {
+      color: white;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::after {
+      content: "";
+      position: absolute;
+      width: 92px;
+      height: 92px;
+      right: -28px;
+      top: -32px;
+      border-radius: 50%;
+      background: rgba(216, 162, 58, 0.22);
+    }
+
+    .metric-source,
+    .metric-label,
+    .metric-small {
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .metric-source {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #dbeaf6;
+      font-weight: bold;
+    }
+
+    .metric-value {
+      display: block;
+      position: relative;
+      z-index: 1;
+      margin: 5px 0 1px;
+      font-size: 2.25rem;
+      line-height: 1;
+      font-weight: 900;
+      color: white;
+    }
+
+    .metric-value-small {
+      font-size: 1.2rem;
+      line-height: 1.25;
+      margin-top: 10px;
+    }
+
+    .metric-label,
+    .metric-small {
+      color: #edf6fb;
+      font-size: 0.86rem;
+    }
+
+    .metrics-note {
+      margin-top: 10px;
+      color: #dbeaf6;
+      font-size: 0.86rem;
+    }
+
+    /* --- More visible publication/working-paper cover titles --- */
+    .cover-title {
+      top: 16px;
+      bottom: auto;
+      left: 16px;
+      right: 16px;
+      display: inline-block;
+      width: calc(100% - 32px);
+      background: rgba(7, 29, 54, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 16px;
+      padding: 11px 13px;
+      font-size: clamp(0.86rem, 1.05vw, 1.04rem);
+      line-height: 1.28;
+      backdrop-filter: blur(6px);
+    }
+
+    /* --- Research-interest hover slides and small visual graphs --- */
+    .research-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .research-radar {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .radar-bars {
+      display: grid;
+      gap: 12px;
+    }
+
+    .radar-row {
+      display: grid;
+      grid-template-columns: 135px 1fr;
+      gap: 12px;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .radar-track {
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      overflow: hidden;
+    }
+
+    .radar-fill {
+      display: block;
+      width: var(--w);
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--gold), #ffffff);
+    }
+
+    .research-slide {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      isolation: isolate;
+    }
+
+    .research-slide h3 {
+      font-size: 1.4rem;
+      line-height: 1.25;
+    }
+
+    .slide-preview {
+      position: relative;
+      z-index: 2;
+    }
+
+    .slide-kicker {
+      display: inline-block;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .mini-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 7px;
+      height: 66px;
+      position: relative;
+      z-index: 2;
+      margin-top: 18px;
+    }
+
+    .mini-bars span {
+      width: 16px;
+      height: var(--h);
+      border-radius: 999px 999px 4px 4px;
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: inset 0 -12px 20px rgba(255, 255, 255, 0.20);
+    }
+
+    .hover-panel {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 5;
+      padding: 24px;
+      min-height: 72%;
+      display: flex;
+      align-items: flex-end;
+      background: linear-gradient(180deg, rgba(7, 29, 54, 0.06), rgba(7, 29, 54, 0.94) 34%, rgba(7, 29, 54, 0.98));
+      transform: translateY(102%);
+      transition: transform 0.35s ease;
+    }
+
+    .hover-panel p {
+      margin: 0;
+      position: relative;
+      z-index: 6;
+    }
+
+    .research-slide:hover .hover-panel,
+    .research-slide:focus-within .hover-panel {
+      transform: translateY(0);
+    }
+
+    .research-slide:hover .slide-preview,
+    .research-slide:focus-within .slide-preview {
+      transform: translateY(-6px);
+    }
+
+    .slide-preview {
+      transition: transform 0.35s ease;
+    }
+
+    /* --- Photo gallery section --- */
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+      gap: 21px;
+    }
+
+    .photo-card {
+      margin: 0;
+      position: relative;
+      min-height: 315px;
+      border-radius: 25px;
+      overflow: hidden;
+      border: 1px solid rgba(7, 29, 54, 0.12);
+      box-shadow: var(--soft-shadow);
+      background: #071d36;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 315px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease, filter 0.45s ease;
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.055);
+      filter: saturate(1.05) contrast(1.03);
+    }
+
+    .photo-card figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 68px 18px 17px;
+      color: white;
+      background: linear-gradient(180deg, transparent, rgba(7, 29, 54, 0.92));
+    }
+
+    .photo-card strong,
+    .photo-card span {
+      display: block;
+    }
+
+    .photo-card strong {
+      font-size: 1.04rem;
+      line-height: 1.25;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.50);
+    }
+
+    .photo-card span {
+      color: #e7eef7;
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    .photo-location {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--main);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-weight: bold;
+      font-size: 0.78rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
+    }
+
+    /* --- Media section with multiple videos --- */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .video-grid .video-card {
+      grid-template-columns: 1fr;
+      align-items: stretch;
+    }
+
+    .video-grid .video-thumb {
+      min-height: 260px;
+    }
+
+    .video-grid .video-thumb img {
+      min-height: 260px;
+    }
+
+    /* --- More visible contact email card --- */
+    .email-box {
+      background: linear-gradient(135deg, #ffffff, #eef6fb);
+      border: 1px solid var(--border);
+      border-left: 7px solid var(--gold);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--soft-shadow);
+      margin-bottom: 22px;
+    }
+
+    .email-box h3 {
+      margin-top: 0;
+    }
+
+    .email-pill {
+      display: inline-block;
+      margin: 6px 8px 0 0;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--main);
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.04);
+    }
+
+    .email-pill:hover {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* --- Software visual block --- */
+    .tool-constellation {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+      gap: 12px;
+    }
+
+    .tool-node {
+      min-height: 86px;
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #eef6fb, #ffffff);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      font-weight: bold;
+      color: var(--main);
+    }
+
+    .tool-node span {
+      display: block;
+      font-size: 1.55rem;
+      margin-bottom: 3px;
+    }
+
     @media (max-width: 900px) {
       .research-slider {
+        grid-template-columns: 1fr;
+      }
+
+      .research-visual,
+      .metrics-strip {
         grid-template-columns: 1fr;
       }
 
@@ -675,9 +1062,34 @@
           <a href="#publications">Publications</a>
           <a href="#working-papers">Working Papers</a>
           <a href="#projects">Projects</a>
+          <a href="#photos">Photos</a>
           <a href="#service">Service</a>
           <a href="#contact">Contact</a>
         </div>
+
+        <div class="metrics-strip" aria-label="Citation metrics">
+          <a class="metric-card" href="https://scholar.google.com/citations?user=tziEf2cAAAAJ&hl=en" target="_blank">
+            <span class="metric-source">Google Scholar</span>
+            <span class="metric-value" data-metric="googleScholarCitations">506</span>
+            <span class="metric-label">citations</span>
+            <span class="metric-small">h-index <strong data-metric="googleScholarHIndex">9</strong></span>
+          </a>
+
+          <a class="metric-card" href="https://www.scopus.com/authid/detail.uri?authorId=56487943900" target="_blank">
+            <span class="metric-source">Scopus</span>
+            <span class="metric-value metric-value-small" data-metric="scopusCitations">Live profile</span>
+            <span class="metric-label">citations</span>
+            <span class="metric-small">author profile linked</span>
+          </a>
+
+          <a class="metric-card" href="https://www.webofscience.com/wos/author/record/8002903" target="_blank">
+            <span class="metric-source">Web of Science</span>
+            <span class="metric-value metric-value-small" data-metric="webOfScienceCitations">Live profile</span>
+            <span class="metric-label">citations</span>
+            <span class="metric-small">researcher profile linked</span>
+          </a>
+        </div>
+        <p class="metrics-note" id="citation-updated">Citation metrics update from citation-metrics.json when available.</p>
       </div>
     </div>
   </header>
@@ -691,6 +1103,7 @@
     <a href="#working-papers">Working Papers</a>
     <a href="#projects">Projects</a>
     <a href="#software">Software</a>
+    <a href="#photos">Photos</a>
     <a href="#service">Service</a>
     <a href="#media">Media</a>
     <a href="#contact">Contact</a>
@@ -727,57 +1140,102 @@
       <h2>Research Interests</h2>
 
       <div class="research-lead">
-        <h3>Experimental and Behavioural Economics</h3>
-        <p>
-          My work uses incentivised laboratory and online experiments to study decision-making
-          under risk, uncertainty, ambiguity, beliefs, time delay, and social responsibility.
-          A central methodological concern across my projects is credible, reproducible,
-          and robust behavioural measurement.
-        </p>
-        <div class="tag-cloud">
-          <span class="tag dark">Hypothetical bias</span>
-          <span class="tag dark">Robustness</span>
-          <span class="tag dark">Reproducibility</span>
-          <span class="tag dark">Credibility</span>
-          <span class="tag dark">Experimental methodology</span>
+        <div class="research-visual">
+          <div>
+            <h3>Experimental and Behavioural Economics</h3>
+            <p>
+              My work uses incentivised laboratory and online experiments to study decision-making
+              under risk, uncertainty, ambiguity, beliefs, time delay, and social responsibility.
+              A central methodological concern across my projects is credible, reproducible,
+              and robust behavioural measurement.
+            </p>
+            <div class="tag-cloud">
+              <span class="tag dark">Hypothetical bias</span>
+              <span class="tag dark">Robustness</span>
+              <span class="tag dark">Reproducibility</span>
+              <span class="tag dark">Credibility</span>
+              <span class="tag dark">Experimental methodology</span>
+            </div>
+          </div>
+
+          <div class="research-radar" aria-label="Visual overview of research methods and themes">
+            <div class="radar-bars">
+              <div class="radar-row"><span>Experiments</span><div class="radar-track"><span class="radar-fill" style="--w: 96%"></span></div></div>
+              <div class="radar-row"><span>Behavioural models</span><div class="radar-track"><span class="radar-fill" style="--w: 88%"></span></div></div>
+              <div class="radar-row"><span>Open science</span><div class="radar-track"><span class="radar-fill" style="--w: 84%"></span></div></div>
+              <div class="radar-row"><span>Policy relevance</span><div class="radar-track"><span class="radar-fill" style="--w: 78%"></span></div></div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="research-slider">
-        <div class="research-slide slide-1">
-          <div class="research-number">01</div>
-          <h3>Risk, Time, Beliefs, and Ambiguity</h3>
-          <p>
-            Preference elicitation, latent risk preferences, intertemporal choice,
-            beliefs, ambiguity, complexity, and the resolution of uncertainty across domains.
-          </p>
+        <div class="research-slide slide-1" tabindex="0">
+          <div class="slide-preview">
+            <div class="research-number">01</div>
+            <span class="slide-kicker">Research Interest</span>
+            <h3>Risk, Time, Beliefs, and Ambiguity</h3>
+          </div>
+          <div class="mini-bars" aria-hidden="true">
+            <span style="--h: 42%"></span><span style="--h: 72%"></span><span style="--h: 58%"></span><span style="--h: 88%"></span><span style="--h: 64%"></span>
+          </div>
+          <div class="hover-panel">
+            <p>
+              Preference elicitation, latent risk preferences, intertemporal choice,
+              beliefs, ambiguity, complexity, and the resolution of uncertainty across domains.
+            </p>
+          </div>
         </div>
 
-        <div class="research-slide slide-2">
-          <div class="research-number">02</div>
-          <h3>Decision-Making for Others and Paternalism</h3>
-          <p>
-            Delegated choices, paternalism, responsibility aversion, preference projection,
-            self–other gaps, and preference aggregation.
-          </p>
+        <div class="research-slide slide-2" tabindex="0">
+          <div class="slide-preview">
+            <div class="research-number">02</div>
+            <span class="slide-kicker">Research Interest</span>
+            <h3>Decision-Making for Others and Paternalism</h3>
+          </div>
+          <div class="mini-bars" aria-hidden="true">
+            <span style="--h: 54%"></span><span style="--h: 82%"></span><span style="--h: 68%"></span><span style="--h: 46%"></span><span style="--h: 91%"></span>
+          </div>
+          <div class="hover-panel">
+            <p>
+              Delegated choices, paternalism, responsibility aversion, preference projection,
+              self–other gaps, and preference aggregation.
+            </p>
+          </div>
         </div>
 
-        <div class="research-slide slide-3">
-          <div class="research-number">03</div>
-          <h3>Climate, AI, and Public Economics</h3>
-          <p>
-            Climate-related behavioural choices, energy decisions, algorithmic delegation,
-            economics of AI, and public-policy-relevant uncertainty.
-          </p>
+        <div class="research-slide slide-3" tabindex="0">
+          <div class="slide-preview">
+            <div class="research-number">03</div>
+            <span class="slide-kicker">Research Interest</span>
+            <h3>Climate, AI, and Public Economics</h3>
+          </div>
+          <div class="mini-bars" aria-hidden="true">
+            <span style="--h: 60%"></span><span style="--h: 49%"></span><span style="--h: 93%"></span><span style="--h: 76%"></span><span style="--h: 66%"></span>
+          </div>
+          <div class="hover-panel">
+            <p>
+              Climate-related behavioural choices, energy decisions, algorithmic delegation,
+              economics of AI, and public-policy-relevant uncertainty.
+            </p>
+          </div>
         </div>
 
-        <div class="research-slide slide-4">
-          <div class="research-number">04</div>
-          <h3>Strategic and Institutional Design</h3>
-          <p>
-            Auctions, game theory, mechanism design, persuasion, strategic behaviour,
-            open science, and the replication crisis.
-          </p>
+        <div class="research-slide slide-4" tabindex="0">
+          <div class="slide-preview">
+            <div class="research-number">04</div>
+            <span class="slide-kicker">Research Interest</span>
+            <h3>Strategic and Institutional Design</h3>
+          </div>
+          <div class="mini-bars" aria-hidden="true">
+            <span style="--h: 47%"></span><span style="--h: 78%"></span><span style="--h: 52%"></span><span style="--h: 69%"></span><span style="--h: 86%"></span>
+          </div>
+          <div class="hover-panel">
+            <p>
+              Auctions, game theory, mechanism design, persuasion, strategic behaviour,
+              open science, and the replication crisis.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -1072,6 +1530,14 @@
             <span class="tag">z-Tree</span>
             <span class="tag">z-Tree unleashed</span>
           </div>
+
+          <div class="tool-constellation" aria-label="Visual research-tool map">
+            <div class="tool-node"><span>🧪</span>oTree / z-Tree</div>
+            <div class="tool-node"><span>📊</span>R / Stata</div>
+            <div class="tool-node"><span>🐍</span>Python</div>
+            <div class="tool-node"><span>🌐</span>SQL / PHP / JS</div>
+            <div class="tool-node"><span>📐</span>G*Power</div>
+          </div>
         </div>
       </div>
     </section>
@@ -1142,34 +1608,166 @@
       </div>
     </section>
 
+
+
+    <section id="photos">
+      <h2>Photo Gallery</h2>
+
+      <div class="photo-gallery">
+        <figure class="photo-card">
+          <span class="photo-location">UNSW / BizLab</span>
+          <img src="photos/bizlab-workshop.jpg" alt="Audience at a BizLab workshop">
+          <figcaption>
+            <strong>BizLab Workshop</strong>
+            <span>Workshop setting in business experimental research.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <span class="photo-location">BizLab</span>
+          <img src="photos/bizlab.jpg" alt="Selfie in the BizLab laboratory">
+          <figcaption>
+            <strong>Business Experimental Research Laboratory</strong>
+            <span>At BizLab, UNSW Business School.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <span class="photo-location">BLESS</span>
+          <img src="photos/bless-lab.jpg" alt="Experimental laboratory with poker chips and cubicles">
+          <figcaption>
+            <strong>BLESS Experimental Laboratory</strong>
+            <span>Preparing an experimental economics session.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <span class="photo-location">Nice</span>
+          <img src="photos/coastal-walk.jpg" alt="Coastal walk by the sea">
+          <figcaption>
+            <strong>Coastal Walk</strong>
+            <span>A moment by the Mediterranean coast.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <span class="photo-location">ESA Lyon</span>
+          <img src="photos/esa-lyon.jpg" alt="Presentation at ESA Lyon">
+          <figcaption>
+            <strong>ESA Lyon Presentation</strong>
+            <span>Presenting research on preference elicitation.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <span class="photo-location">Early years</span>
+          <img src="photos/kid.jpg" alt="Childhood photograph">
+          <figcaption>
+            <strong>Early Years</strong>
+            <span>Childhood photograph.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <span class="photo-location">Academic motto</span>
+          <img src="photos/academic-avatar.jpg" alt="Illustrated academic avatar with motto">
+          <figcaption>
+            <strong>Repetitio est mater studiorum</strong>
+            <span>Illustrated academic avatar and motto.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <span class="photo-location">Skopje</span>
+          <img src="photos/skopje-presentation.jpg" alt="Presentation in Skopje">
+          <figcaption>
+            <strong>Presentation in Skopje</strong>
+            <span>Academic presentation in North Macedonia.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <span class="photo-location">Štip / UGD</span>
+          <img src="photos/stip-teaching.jpg" alt="Teaching Game Theory at UGD">
+          <figcaption>
+            <strong>Teaching Game Theory at UGD</strong>
+            <span>Classroom teaching at Goce Delčev University.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <span class="photo-location">Szczecin</span>
+          <img src="photos/szczecin-panel.jpg" alt="Panel discussion in Szczecin">
+          <figcaption>
+            <strong>Panel Discussion in Szczecin</strong>
+            <span>Academic discussion and public engagement.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <span class="photo-location">Université Côte d’Azur</span>
+          <img src="photos/unica-presentation.jpg" alt="Presentation at Université Côte d’Azur">
+          <figcaption>
+            <strong>UniCA Research Presentation</strong>
+            <span>Presentation at Université Côte d’Azur.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <span class="photo-location">GREDEG / UniCA</span>
+          <img src="photos/unica-group.jpg" alt="Group photo at Université Côte d’Azur">
+          <figcaption>
+            <strong>GREDEG / UniCA Meeting</strong>
+            <span>Research meeting and group photograph.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section id="media">
       <h2>Media Appearances</h2>
 
-      <a class="video-card" href="https://www.youtube.com/watch?v=czGGRhyUu3A" target="_blank">
-        <div class="video-thumb">
-          <img src="https://img.youtube.com/vi/czGGRhyUu3A/hqdefault.jpg" alt="YouTube video thumbnail">
-          <div class="play-button">▶</div>
-        </div>
+      <div class="video-grid">
+        <a class="video-card" href="https://www.youtube.com/watch?v=czGGRhyUu3A" target="_blank">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/czGGRhyUu3A/hqdefault.jpg" alt="YouTube video thumbnail for Macedonian Radio Television interview">
+            <div class="play-button">▶</div>
+          </div>
 
-        <div class="video-body">
-          <span class="badge">Video</span>
-          <h3>Selected media appearance</h3>
-          <p>
-            Click the image to watch the video on YouTube.
-          </p>
-        </div>
-      </a>
+          <div class="video-body">
+            <span class="badge">Interview</span>
+            <h3>Interview for the Macedonian Radio Television</h3>
+            <p>
+              Click the image to watch the interview on YouTube.
+            </p>
+          </div>
+        </a>
+
+        <a class="video-card" href="https://www.youtube.com/watch?v=U8JeF35Gtbg" target="_blank">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/U8JeF35Gtbg/hqdefault.jpg" alt="YouTube video thumbnail for teaching Game Theory at UGD">
+            <div class="play-button">▶</div>
+          </div>
+
+          <div class="video-body">
+            <span class="badge">Teaching video</span>
+            <h3>Teaching Game Theory at UGD</h3>
+            <p>
+              Click the image to watch the teaching video on YouTube.
+            </p>
+          </div>
+        </a>
+      </div>
     </section>
 
     <section id="contact">
       <h2>Contact and Profiles</h2>
 
-      <p>
-        <strong>Email:</strong>
-        <a href="mailto:f.fidanoski@zju.edu.cn">f.fidanoski@zju.edu.cn</a>
-        or
-        <a href="mailto:filipfidanoski@gmail.com">filipfidanoski@gmail.com</a>
-      </p>
+      <div class="email-box">
+        <h3>Email</h3>
+        <a class="email-pill" href="mailto:f.fidanoski@zju.edu.cn">f.fidanoski@zju.edu.cn</a>
+        <a class="email-pill" href="mailto:filipfidanoski@gmail.com">filipfidanoski@gmail.com</a>
+      </div>
 
       <div class="contact-grid">
         <a class="contact-link" href="https://person.zju.edu.cn/en/filipfidanoski" target="_blank">
@@ -1229,6 +1827,37 @@
       © 2026 Filip Fidanoski. Academic website hosted with GitHub Pages.
     </p>
   </footer>
+
+
+  <script>
+    async function loadCitationMetrics() {
+      const updatedText = document.getElementById('citation-updated');
+
+      try {
+        const response = await fetch('citation-metrics.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error('No citation metrics file found');
+        const data = await response.json();
+
+        document.querySelectorAll('[data-metric]').forEach((element) => {
+          const key = element.dataset.metric;
+          const value = data[key];
+          if (value !== undefined && value !== null && String(value).trim() !== '') {
+            element.textContent = value;
+          }
+        });
+
+        if (updatedText && data.lastUpdated) {
+          updatedText.textContent = `Citation metrics last updated: ${data.lastUpdated}.`;
+        }
+      } catch (error) {
+        if (updatedText) {
+          updatedText.textContent = 'Google Scholar shown from the latest public search result; Scopus and Web of Science are linked for live verification.';
+        }
+      }
+    }
+
+    loadCitationMetrics();
+  </script>
 
 </body>
 </html>
