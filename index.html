@@ -641,9 +641,7 @@
       font-size: 0.9rem;
     }
 
-
-
-    /* --- Citation metrics at the top --- */
+    
     .metrics-strip {
       margin-top: 30px;
       display: grid;
@@ -721,7 +719,7 @@
       font-size: 0.86rem;
     }
 
-    /* --- More visible publication/working-paper cover titles --- */
+    
     .cover-title {
       top: 16px;
       bottom: auto;
@@ -771,7 +769,7 @@
       margin-top: 22px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 5px;
       width: 100%;
       max-width: 100%;
     }
@@ -781,7 +779,7 @@
       min-width: 0;
       min-height: 74px;
       border-radius: 18px;
-      padding: 9px 6px;
+      padding: 7px 4px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -791,8 +789,9 @@
       border: 1px solid rgba(255, 255, 255, 0.24);
       color: white;
       font-weight: bold;
-      font-size: 0.76rem;
-      line-height: 1.22;
+      font-size: 0.66rem;
+      line-height: 1.1;
+      overflow-wrap: anywhere;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
     }
 
@@ -804,15 +803,14 @@
     }
 
     .deep-arrow {
-      flex: 0 0 16px;
+      flex: 0 0 10px;
       text-align: center;
       color: rgba(255, 255, 255, 0.82);
       font-weight: 900;
-      font-size: 1.05rem;
+      font-size: 0.95rem;
     }
 
-
-    /* --- Research-interest hover slides and small visual graphs --- */
+    
     .research-visual {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -936,7 +934,7 @@
       transition: transform 0.35s ease;
     }
 
-    /* --- Photo gallery section --- */
+    
     .photo-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
@@ -1015,7 +1013,7 @@
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
     }
 
-    /* --- Media section with multiple videos --- */
+    
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1035,7 +1033,7 @@
       min-height: 260px;
     }
 
-    /* --- More visible contact email card --- */
+    
     .email-box {
       background: linear-gradient(135deg, #ffffff, #eef6fb);
       border: 1px solid var(--border);
@@ -1068,7 +1066,7 @@
       transform: translateY(-2px);
     }
 
-    /* --- Software visual block --- */
+    
     .tool-constellation {
       margin-top: 20px;
       display: grid;
@@ -1096,33 +1094,7 @@
       font-size: 1.55rem;
       margin-bottom: 3px;
     }
-
-    .tool-sticker-cloud {
-      margin: 18px 0 10px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .tool-sticker {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #f8fbff, #eef6fb);
-      border: 1px solid var(--border);
-      color: var(--main);
-      font-weight: bold;
-      font-size: 0.88rem;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
-    }
-
-    .tool-sticker .emoji {
-      font-size: 1rem;
-    }
-
-    @media (max-width: 980px) {
+@media (max-width: 980px) {
       .deep-loop {
         flex-direction: column;
         align-items: stretch;
@@ -1205,7 +1177,7 @@
       <img src="filip.jpg" alt="Filip Fidanoski" class="profile-photo">
 
       <div class="hero-text">
-        <span class="eyebrow">Experimental and Behavioural Economics</span>
+        <span class="eyebrow">Experimental and Behavioural Economist</span>
         <h1>Filip Fidanoski</h1>
         <p>
           Postdoctoral Research Fellow in Behavioural Decision-Making<br>
@@ -1226,9 +1198,9 @@
         <div class="metrics-strip" aria-label="Citation metrics">
           <a class="metric-card" href="https://scholar.google.com/citations?user=tziEf2cAAAAJ&hl=en" target="_blank">
             <span class="metric-source">Google Scholar</span>
-            <span class="metric-value">506</span>
+            <span class="metric-value" data-scholar-citations>513</span>
             <span class="metric-label">citations</span>
-            <span class="metric-small">h-index <strong>9</strong> · open live profile</span>
+            <span class="metric-small">h-index <strong data-scholar-hindex>9</strong></span>
           </a>
 
           <a class="metric-card" href="https://www.scopus.com/authid/detail.uri?authorId=56487943900" target="_blank">
@@ -1775,8 +1747,6 @@
       </div>
     </section>
 
-
-
     <section id="photos">
       <h2>Photo Gallery</h2>
 
@@ -1904,9 +1874,6 @@
           <div class="video-body">
             <span class="badge">Interview</span>
             <h3>Interview for the Macedonian Radio Television</h3>
-            <p>
-              Click the image to watch the interview on YouTube.
-            </p>
           </div>
         </a>
 
@@ -1919,9 +1886,6 @@
           <div class="video-body">
             <span class="badge">Teaching video</span>
             <h3>Teaching Game Theory at UGD</h3>
-            <p>
-              Click the image to watch the teaching video on YouTube.
-            </p>
           </div>
         </a>
       </div>
@@ -1995,5 +1959,22 @@
       © 2026 Filip Fidanoski. Academic website hosted with GitHub Pages.
     </p>
   </footer>
+  <script>
+    (function () {
+      var citations = document.querySelector("[data-scholar-citations]");
+      var hIndex = document.querySelector("[data-scholar-hindex]");
+      fetch("citation-metrics.json", { cache: "no-store" })
+        .then(function (response) {
+          return response.ok ? response.json() : null;
+        })
+        .then(function (data) {
+          if (!data) return;
+          if (data.googleScholarCitations && citations) citations.textContent = data.googleScholarCitations;
+          if (data.googleScholarHIndex && hIndex) hIndex.textContent = data.googleScholarHIndex;
+        })
+        .catch(function () {});
+    })();
+  </script>
+
 </body>
 </html>
